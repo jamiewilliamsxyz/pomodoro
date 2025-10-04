@@ -1,7 +1,9 @@
+import Timer from "@/components/features/timer/Timer";
+
 const Home = () => {
   return (
-    <div>
-      <div></div>
+    <div className="flex items-center justify-center h-screen">
+      <Timer />
     </div>
   );
 };
