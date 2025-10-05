@@ -1,13 +1,14 @@
-const radius = 122;
-const stroke = 11.25;
-const diameter = radius * 2 + stroke;
-
-const TimerDisplay = () => {
+const ProgressCircle = ({
+  diameter,
+  radius,
+  stroke,
+}: {
+  diameter: number;
+  radius: number;
+  stroke: number;
+}) => {
   return (
-    <div
-      className="relative flex items-center justify-center"
-      style={{ width: diameter, height: diameter }}
-    >
+    <>
       <svg width={diameter} height={diameter}>
         <circle
           cx={radius + stroke / 2}
@@ -36,14 +37,8 @@ const TimerDisplay = () => {
           strokeLinecap="round"
         />
       </svg>
-
-      <div className="absolute flex flex-col items-center gap-5">
-        <h2 className="text-xl text-neutral-700">Focus</h2>
-        <h3 className="text-center text-6xl font-medium">25:00</h3>
-        <h4 className="text-lg text-neutral-700">0/4</h4>
-      </div>
-    </div>
+    </>
   );
 };
 
-export default TimerDisplay;
+export default ProgressCircle;
