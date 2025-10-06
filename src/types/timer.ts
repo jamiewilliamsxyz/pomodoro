@@ -5,10 +5,12 @@ export interface TimerState {
   currentTime: number;
   sessionType: SessionType;
   roundsCompleted: number;
+  canRestartSession: boolean;
 }
 
 export interface TimerActions {
   startStop: () => void;
+  restartSession: () => void;
   // skipSession: () => void;
   // restartSession: () => void;
   // handleSessionEnd: () => void;
@@ -16,7 +18,7 @@ export interface TimerActions {
 
 export type UseTimerReturn = TimerState & TimerActions;
 
-export type TimerRef = NodeJS.Timeout | null;
+export type TimerRef = number | null;
 
 // Format Time Function
 export interface FormatTimeReturn {

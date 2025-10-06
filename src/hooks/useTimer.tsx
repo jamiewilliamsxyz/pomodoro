@@ -2,12 +2,18 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { TimerRef, SessionType, UseTimerReturn } from "@/types";
 import { useToggle } from "@/hooks";
 
+// Temporary session lengths
+const focusLength = 25 * 60;
+const shortBreakLength = 5 * 60;
+const longBreakLength = 15 * 60;
+
 export const useTimer = (): UseTimerReturn => {
   // Setting timer state
   const [isRunning, toggleRunning] = useToggle(false);
-  const [currentTime, setCurrentTime] = useState<number>(25 * 60);
+  const [currentTime, setCurrentTime] = useState<number>(focusLength);
   const [sessionType, setSessionType] = useState<SessionType>("Focus");
   const [roundsCompleted, setRoundsCompleted] = useState<number>(0);
+  const [canRestartSession, setCanRestartSession] = useState<boolean>(false);
 
   const timerRef = useRef<TimerRef>(null);
 
@@ -16,34 +22,71 @@ export const useTimer = (): UseTimerReturn => {
     toggleRunning();
   }, [toggleRunning]);
 
+  const restartSession = useCallback((): void => {
+    if (isRunning) toggleRunning();
+    if (timerRef.current !== null) clearInterval(timerRef.current);
+    switch (sessionType) {
+      case "Focus":
+        setCurrentTime(focusLength);
+        break;
+      case "Short Break":
+        setCurrentTime(shortBreakLength);
+        break;
+      case "Long Break":
+        setCurrentTime(longBreakLength);
+        break;
+      default:
+        setCurrentTime(focusLength);
+        break;
+    }
+  }, [isRunning, toggleRunning, sessionType, setCurrentTime]);
+
   /*
   const skipSession = useCallback(() => {}, []);
-
-  const restartSession = useCallback(() => {}, []);
 
   const handleSessionEnd = () => {};
   */
 
-  // Countdown
+  // Put into /lib when reusing
+  const getCurrentSessionLength = useCallback((): number => {
+    let sessionDuration = focusLength;
+    switch (sessionType) {
+      case "Short Break":
+        sessionDuration = shortBreakLength;
+        break;
+      case "Long Break":
+        sessionDuration = longBreakLength;
+        break;
+    }
+    return sessionDuration;
+  }, [sessionType]);
+
   useEffect(() => {
+    // Countdown
     if (isRunning) {
-      timerRef.current = setInterval(() => {
+      timerRef.current = window.setInterval(() => {
         setCurrentTime((prev) => prev - 1);
       }, 1000);
     }
 
-    return () => clearInterval(timerRef.current as NodeJS.Timeout); // clearInterval won't accept null
+    return () => {
+      if (timerRef.current !== null) clearInterval(timerRef.current);
+    }; // clearInterval won't accept null
   }, [isRunning]);
+
+  useEffect(() => {
+    setCanRestartSession(currentTime < getCurrentSessionLength());
+  }, [currentTime, getCurrentSessionLength]);
 
   // Returning functions/state to use in Timer.tsx to pass down
   return {
     startStop,
+    restartSession,
     isRunning,
     currentTime,
     sessionType,
     roundsCompleted,
+    canRestartSession,
     // skipSession
-    // restartSession
-    // handleSession
   };
 };

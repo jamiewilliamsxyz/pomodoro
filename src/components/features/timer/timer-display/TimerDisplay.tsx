@@ -6,7 +6,7 @@ const radius = 122;
 const stroke = 11.25;
 const diameter = radius * 2 + stroke;
 
-type TimerDisplayProps = Omit<TimerState, "isRunning">;
+type TimerDisplayProps = Omit<TimerState, "isRunning" | "canRestartSession">;
 
 const TimerDisplay = ({
   sessionType,

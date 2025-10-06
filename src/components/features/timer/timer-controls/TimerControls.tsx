@@ -1,21 +1,25 @@
-import { RotateCcw, SkipForward } from "lucide-react";
 import { TimerActions, TimerState } from "@/types";
-import SmallTimerButton from "./SmallTimerButton";
+import RestartButton from "./RestartButton";
+import SkipButton from "./SkipButton";
 import StartStopButton from "./StartStopButton";
 
-type TimerControlsProps = Pick<TimerActions, "startStop"> &
-  Pick<TimerState, "isRunning">;
+type TimerControlsProps = TimerActions &
+  Omit<TimerState, "currentTime" | "sessionType" | "roundsCompleted">;
 
-const TimerControls = ({ startStop, isRunning }: TimerControlsProps) => {
+const TimerControls = ({
+  startStop,
+  restartSession,
+  isRunning,
+  canRestartSession,
+}: TimerControlsProps) => {
   return (
     <div className="flex gap-5 items-center">
-      <SmallTimerButton
-        icon={<RotateCcw width={20} height={20} strokeWidth={1.5} />}
+      <RestartButton
+        restartSession={restartSession}
+        canRestartSession={canRestartSession}
       />
       <StartStopButton startStop={startStop} isRunning={isRunning} />
-      <SmallTimerButton
-        icon={<SkipForward width={20} height={20} strokeWidth={1.5} />}
-      />
+      <SkipButton />
     </div>
   );
 };
