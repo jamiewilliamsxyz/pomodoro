@@ -23,7 +23,9 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en" data-theme={theme}>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased bg-neutral-50`}>
+        {children}
+      </body>
     </html>
   );
 };
