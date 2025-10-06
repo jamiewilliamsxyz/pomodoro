@@ -3,7 +3,7 @@ import { TimerRef, SessionType, UseTimerReturn } from "@/types";
 import { useToggle } from "@/hooks";
 
 // Temporary session lengths
-const focusLength = 25 * 60;
+const focusLength = 1 * 60;
 const shortBreakLength = 5 * 60;
 const longBreakLength = 15 * 60;
 
@@ -90,10 +90,12 @@ export const useTimer = (): UseTimerReturn => {
       }, 1000);
     }
 
+    if (currentTime <= 0) handleSessionEnd();
+
     return () => {
       if (timerRef.current !== null) clearInterval(timerRef.current);
     }; // clearInterval won't accept null
-  }, [isRunning]);
+  }, [isRunning, currentTime, handleSessionEnd]);
 
   useEffect(() => {
     setCanRestartSession(currentTime < getCurrentSessionLength());
