@@ -11,7 +11,7 @@ const Timer = () => {
     skipSession,
     isRunning,
     sessionType,
-    currentRound,
+    roundNumber,
     currentTime,
     canRestartSession,
   } = useTimer();
@@ -21,7 +21,7 @@ const Timer = () => {
       <TimerDisplay
         sessionType={sessionType}
         currentTime={currentTime}
-        currentRound={currentRound}
+        roundNumber={roundNumber}
       />
       <TimerControls
         startStop={startStop}

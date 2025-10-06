@@ -4,7 +4,7 @@ export interface TimerState {
   isRunning: boolean;
   currentTime: number;
   sessionType: SessionType;
-  currentRound: number;
+  roundNumber: number;
   canRestartSession: boolean;
 }
 

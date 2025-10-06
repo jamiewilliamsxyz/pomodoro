@@ -13,7 +13,7 @@ export const useTimer = (): UseTimerReturn => {
   const [isRunning, toggleRunning] = useToggle(false);
   const [currentTime, setCurrentTime] = useState<number>(focusLength);
   const [sessionType, setSessionType] = useState<SessionType>("Focus");
-  const [currentRound, setCurrentRound] = useState<number>(1);
+  const [roundNumber, setRoundNumber] = useState<number>(1);
   const [canRestartSession, setCanRestartSession] = useState<boolean>(false);
 
   const timerRef = useRef<TimerRef>(null);
@@ -30,7 +30,7 @@ export const useTimer = (): UseTimerReturn => {
 
     // Work out which sessionType to move, set currentTime and set currentRound accordingly
     if (sessionType === "Focus") {
-      if (currentRound === roundsLength) {
+      if (roundNumber === roundsLength) {
         setSessionType("Long Break");
         setCurrentTime(longBreakLength);
       } else {
@@ -40,13 +40,13 @@ export const useTimer = (): UseTimerReturn => {
     } else {
       setSessionType("Focus");
       setCurrentTime(focusLength);
-      setCurrentRound((prev) => prev + 1);
+      setRoundNumber((prev) => prev + 1);
     }
 
     if (sessionType === "Long Break") {
-      setCurrentRound(1);
+      setRoundNumber(1);
     }
-  }, [isRunning, currentRound, sessionType, toggleRunning]);
+  }, [isRunning, roundNumber, sessionType, toggleRunning]);
 
   const restartSession = useCallback((): void => {
     if (isRunning) toggleRunning();
@@ -114,7 +114,7 @@ export const useTimer = (): UseTimerReturn => {
     isRunning,
     currentTime,
     sessionType,
-    currentRound,
+    roundNumber,
     canRestartSession,
   };
 };
