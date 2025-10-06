@@ -3,12 +3,12 @@ import { TimerState } from "@/types";
 
 type TimerContentProps = Pick<
   TimerState,
-  "sessionType" | "roundsCompleted" | "currentTime"
+  "sessionType" | "currentRound" | "currentTime"
 >;
 
 const TimerContent = ({
   sessionType,
-  roundsCompleted,
+  currentRound,
   currentTime,
 }: TimerContentProps) => {
   const { minutes, seconds } = formatTime(currentTime);
@@ -18,7 +18,7 @@ const TimerContent = ({
       <h3 className="text-center text-6xl font-medium tabular-nums">
         {minutes}:{seconds.toString().padStart(2, "0")}
       </h3>
-      <h4 className="text-lg text-neutral-700">{roundsCompleted}/4</h4>
+      <h4 className="text-lg text-neutral-700">{currentRound}/4</h4>
     </div>
   );
 };

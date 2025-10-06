@@ -11,7 +11,7 @@ type TimerDisplayProps = Omit<TimerState, "isRunning" | "canRestartSession">;
 const TimerDisplay = ({
   sessionType,
   currentTime,
-  roundsCompleted,
+  currentRound,
 }: TimerDisplayProps) => {
   return (
     <div
@@ -20,7 +20,7 @@ const TimerDisplay = ({
       <ProgressCircle radius={radius} stroke={stroke} diameter={diameter} />
       <TimerContent
         sessionType={sessionType}
-        roundsCompleted={roundsCompleted}
+        currentRound={currentRound}
         currentTime={currentTime}
       />
     </div>

@@ -4,7 +4,7 @@ import SkipButton from "./SkipButton";
 import StartStopButton from "./StartStopButton";
 
 type TimerControlsProps = TimerActions &
-  Omit<TimerState, "currentTime" | "sessionType" | "roundsCompleted">;
+  Pick<TimerState, "isRunning" | "canRestartSession">;
 
 const TimerControls = ({
   startStop,

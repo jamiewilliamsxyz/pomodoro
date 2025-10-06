@@ -11,7 +11,7 @@ const Timer = () => {
     skipSession,
     isRunning,
     sessionType,
-    roundsCompleted,
+    currentRound,
     currentTime,
     canRestartSession,
   } = useTimer();
@@ -20,8 +20,8 @@ const Timer = () => {
     <div className="flex flex-col items-center gap-7">
       <TimerDisplay
         sessionType={sessionType}
-        roundsCompleted={roundsCompleted}
         currentTime={currentTime}
+        currentRound={currentRound}
       />
       <TimerControls
         startStop={startStop}
