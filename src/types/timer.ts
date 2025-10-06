@@ -11,9 +11,7 @@ export interface TimerState {
 export interface TimerActions {
   startStop: () => void;
   restartSession: () => void;
-  // skipSession: () => void;
-  // restartSession: () => void;
-  // handleSessionEnd: () => void;
+  skipSession: () => void;
 }
 
 export type UseTimerReturn = TimerState & TimerActions;

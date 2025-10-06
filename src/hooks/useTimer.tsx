@@ -22,6 +22,29 @@ export const useTimer = (): UseTimerReturn => {
     toggleRunning();
   }, [toggleRunning]);
 
+  const handleSessionEnd = useCallback((): void => {
+    // Stop & clear timer
+    if (isRunning) toggleRunning();
+    if (timerRef.current !== null) clearInterval(timerRef.current);
+
+    // Increment rounds completed
+    if (sessionType === "Focus") setRoundsCompleted((prev) => prev + 1);
+
+    // Work out which sessionType to move to & set currentTime to the new sessionTypes length
+    if (sessionType === "Focus") {
+      if (roundsCompleted === 4) {
+        setSessionType("Long Break");
+        setCurrentTime(longBreakLength);
+      } else {
+        setSessionType("Short Break");
+        setCurrentTime(shortBreakLength);
+      }
+    } else {
+      setSessionType("Focus");
+      setCurrentTime(focusLength);
+    }
+  }, [isRunning, roundsCompleted, sessionType, toggleRunning]);
+
   const restartSession = useCallback((): void => {
     if (isRunning) toggleRunning();
     if (timerRef.current !== null) clearInterval(timerRef.current);
@@ -41,11 +64,9 @@ export const useTimer = (): UseTimerReturn => {
     }
   }, [isRunning, toggleRunning, sessionType, setCurrentTime]);
 
-  /*
-  const skipSession = useCallback(() => {}, []);
-
-  const handleSessionEnd = () => {};
-  */
+  const skipSession = useCallback((): void => {
+    handleSessionEnd();
+  }, [handleSessionEnd]);
 
   // Put into /lib when reusing
   const getCurrentSessionLength = useCallback((): number => {
@@ -82,11 +103,11 @@ export const useTimer = (): UseTimerReturn => {
   return {
     startStop,
     restartSession,
+    skipSession,
     isRunning,
     currentTime,
     sessionType,
     roundsCompleted,
     canRestartSession,
-    // skipSession
   };
 };
