@@ -6,12 +6,13 @@ const radius = 122;
 const stroke = 11.25;
 const diameter = radius * 2 + stroke;
 
+type TimerDisplayProps = Omit<TimerState, "isRunning">;
+
 const TimerDisplay = ({
-  isRunning,
   sessionType,
   currentTime,
   roundsCompleted,
-}: TimerState) => {
+}: TimerDisplayProps) => {
   return (
     <div
       className={`relative flex items-center justify-center w-${diameter} h-${diameter}`}
