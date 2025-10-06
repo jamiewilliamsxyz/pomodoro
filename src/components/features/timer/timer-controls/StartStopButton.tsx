@@ -8,7 +8,7 @@ const StartStopButton = ({ startStop, isRunning }: StartStopButtonProps) => {
   return (
     <button
       onClick={startStop}
-      className="rounded-full text-emerald-300 border-emerald-300 border-2 flex items-center justify-center h-13 w-13"
+      className="rounded-full text-emerald-300 border-emerald-300 border-2 flex items-center justify-center h-13 w-13 hover:cursor-pointer hover:bg-neutral-100 hover:shadow-md transition-all duration-200"
     >
       {isRunning ? (
         <Pause width={30} height={30} strokeWidth={2} />
