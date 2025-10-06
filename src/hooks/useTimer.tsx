@@ -71,7 +71,6 @@ export const useTimer = (): UseTimerReturn => {
     handleSessionEnd();
   }, [handleSessionEnd]);
 
-  // Put into /lib if reusing
   const getCurrentSessionLength = useCallback((): number => {
     let sessionDuration = focusLength;
     switch (sessionType) {
@@ -86,6 +85,11 @@ export const useTimer = (): UseTimerReturn => {
   }, [sessionType]);
 
   useEffect(() => {
+    if (currentTime <= 0 && isRunning) {
+      handleSessionEnd();
+      return;
+    }
+
     // Countdown
     if (isRunning) {
       timerRef.current = window.setInterval(() => {
@@ -93,11 +97,9 @@ export const useTimer = (): UseTimerReturn => {
       }, 1000);
     }
 
-    if (currentTime <= 0 && isRunning) handleSessionEnd();
-
     return () => {
-      if (timerRef.current !== null) clearInterval(timerRef.current);
-    }; // clearInterval won't accept null
+      if (timerRef.current !== null) clearInterval(timerRef.current); // clearInterval won't accept null
+    };
   }, [isRunning, currentTime, handleSessionEnd]);
 
   useEffect(() => {
