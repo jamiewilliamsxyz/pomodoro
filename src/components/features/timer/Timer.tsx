@@ -6,9 +6,10 @@ import TimerDisplay from "./timer-display/TimerDisplay";
 
 const Timer = () => {
   const {
-    isRunning,
     startStop,
     restartSession,
+    skipSession,
+    isRunning,
     sessionType,
     roundsCompleted,
     currentTime,
@@ -24,8 +25,9 @@ const Timer = () => {
       />
       <TimerControls
         startStop={startStop}
-        isRunning={isRunning}
         restartSession={restartSession}
+        skipSession={skipSession}
+        isRunning={isRunning}
         canRestartSession={canRestartSession}
       />
     </div>

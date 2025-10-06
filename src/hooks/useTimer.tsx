@@ -68,7 +68,7 @@ export const useTimer = (): UseTimerReturn => {
     handleSessionEnd();
   }, [handleSessionEnd]);
 
-  // Put into /lib when reusing
+  // Put into /lib if reusing
   const getCurrentSessionLength = useCallback((): number => {
     let sessionDuration = focusLength;
     switch (sessionType) {
@@ -90,7 +90,7 @@ export const useTimer = (): UseTimerReturn => {
       }, 1000);
     }
 
-    if (currentTime <= 0) handleSessionEnd();
+    if (currentTime <= 0 && isRunning) handleSessionEnd();
 
     return () => {
       if (timerRef.current !== null) clearInterval(timerRef.current);
@@ -101,7 +101,7 @@ export const useTimer = (): UseTimerReturn => {
     setCanRestartSession(currentTime < getCurrentSessionLength());
   }, [currentTime, getCurrentSessionLength]);
 
-  // Returning functions/state to use in Timer.tsx to pass down
+  // Returning functions/state to use in Timer components
   return {
     startStop,
     restartSession,

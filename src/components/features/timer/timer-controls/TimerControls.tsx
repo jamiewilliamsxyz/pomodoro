@@ -9,6 +9,7 @@ type TimerControlsProps = TimerActions &
 const TimerControls = ({
   startStop,
   restartSession,
+  skipSession,
   isRunning,
   canRestartSession,
 }: TimerControlsProps) => {
@@ -19,7 +20,7 @@ const TimerControls = ({
         canRestartSession={canRestartSession}
       />
       <StartStopButton startStop={startStop} isRunning={isRunning} />
-      <SkipButton />
+      <SkipButton skipSession={skipSession} />
     </div>
   );
 };
