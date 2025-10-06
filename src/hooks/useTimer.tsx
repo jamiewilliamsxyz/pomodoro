@@ -23,10 +23,19 @@ export const useTimer = (): UseTimerReturn => {
     toggleRunning();
   }, [toggleRunning]);
 
+  const clearTimer = useCallback(() => {
+    if (timerRef.current) {
+      // clearInterval won't accept null
+      clearInterval(timerRef.current);
+      timerRef.current = null; // Setting timerRef to null since it holds the old interval ID
+    }
+  }, []);
+
   const handleSessionEnd = useCallback((): void => {
     // Stop & clear timer
     if (isRunning) toggleRunning();
-    if (timerRef.current !== null) clearInterval(timerRef.current);
+
+    clearTimer();
 
     // Work out which sessionType to move, set currentTime and set currentRound accordingly
     if (sessionType === "Focus") {
@@ -46,11 +55,13 @@ export const useTimer = (): UseTimerReturn => {
     if (sessionType === "Long Break") {
       setRoundNumber(1);
     }
-  }, [isRunning, roundNumber, sessionType, toggleRunning]);
+  }, [isRunning, roundNumber, sessionType, toggleRunning, clearTimer]);
 
   const restartSession = useCallback((): void => {
     if (isRunning) toggleRunning();
-    if (timerRef.current !== null) clearInterval(timerRef.current);
+
+    clearTimer();
+
     switch (sessionType) {
       case "Focus":
         setCurrentTime(focusLength);
@@ -65,7 +76,7 @@ export const useTimer = (): UseTimerReturn => {
         setCurrentTime(focusLength);
         break;
     }
-  }, [isRunning, toggleRunning, sessionType, setCurrentTime]);
+  }, [isRunning, sessionType, toggleRunning, setCurrentTime, clearTimer]);
 
   const skipSession = useCallback((): void => {
     handleSessionEnd();
@@ -98,9 +109,9 @@ export const useTimer = (): UseTimerReturn => {
     }
 
     return () => {
-      if (timerRef.current !== null) clearInterval(timerRef.current); // clearInterval won't accept null
+      clearTimer();
     };
-  }, [isRunning, currentTime, handleSessionEnd]);
+  }, [isRunning, currentTime, handleSessionEnd, clearTimer]);
 
   useEffect(() => {
     setCanRestartSession(currentTime < getCurrentSessionLength());
