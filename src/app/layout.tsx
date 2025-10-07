@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import Topbar from "@/components/layout/Topbar";
 import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
@@ -28,6 +28,7 @@ const RootLayout = ({
       <body
         className={`${inter.className} antialiased bg-neutral-50 h-screen flex flex-col`}
       >
+        <Topbar />
         {children}
         <Footer />
       </body>
