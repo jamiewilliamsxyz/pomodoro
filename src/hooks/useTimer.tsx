@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { TimerRef, SessionType, UseTimerReturn } from "@/types";
 import { useToggle } from "@/hooks";
 import { tempSettings } from "@/app/data/tempSettings";
+import { get } from "http";
 
 export const useTimer = (): UseTimerReturn => {
   // Setting timer state
@@ -48,56 +49,34 @@ export const useTimer = (): UseTimerReturn => {
 
     clearTimer();
 
-    // Set totalTime for progress circle
-    setTotalTime(getCurrentSessionLength());
-
     // Work out which sessionType to move, set currentTime and set currentRound accordingly
     if (sessionType === "Focus") {
       if (roundNumber === tempSettings.roundsUntilLongBreak) {
         setSessionType("Long Break");
         setCurrentTime(tempSettings.longBreakLength);
+        setTotalTime(tempSettings.longBreakLength);
       } else {
         setSessionType("Short Break");
         setCurrentTime(tempSettings.shortBreakLength);
+        setTotalTime(tempSettings.shortBreakLength);
       }
     } else {
       setSessionType("Focus");
       setCurrentTime(tempSettings.focusLength);
+      setTotalTime(tempSettings.focusLength);
       setRoundNumber((prev) => prev + 1);
     }
 
     if (sessionType === "Long Break") {
       setRoundNumber(1);
     }
-  }, [
-    isRunning,
-    roundNumber,
-    sessionType,
-    toggleRunning,
-    clearTimer,
-    getCurrentSessionLength,
-  ]);
+  }, [isRunning, roundNumber, sessionType, toggleRunning, clearTimer]);
 
   const restartSession = useCallback((): void => {
     if (isRunning) toggleRunning();
 
     clearTimer();
-
-    switch (sessionType) {
-      case "Focus":
-        setCurrentTime(tempSettings.focusLength);
-        break;
-      case "Short Break":
-        setCurrentTime(tempSettings.shortBreakLength);
-        break;
-      case "Long Break":
-        setCurrentTime(tempSettings.longBreakLength);
-        break;
-      default:
-        setCurrentTime(tempSettings.focusLength);
-        break;
-    }
-  }, [isRunning, sessionType, toggleRunning, clearTimer]);
+  }, [isRunning, toggleRunning, clearTimer]);
 
   const skipSession = useCallback((): void => {
     handleSessionEnd();
@@ -121,9 +100,15 @@ export const useTimer = (): UseTimerReturn => {
     };
   }, [isRunning, currentTime, handleSessionEnd, clearTimer]);
 
+  // Determine if session can be restarted (for RestartButton state)
   useEffect(() => {
     setCanRestartSession(currentTime < getCurrentSessionLength());
   }, [currentTime, getCurrentSessionLength]);
+
+  // Update totalTime whenever sessionType changes (for ProgressCircle)
+  useEffect(() => {
+    setTotalTime(getCurrentSessionLength());
+  }, [sessionType, getCurrentSessionLength]);
 
   // Returning functions/state to use in Timer components
   return {
