@@ -8,7 +8,7 @@ const ProgressCircle = ({
   totalTime,
 }: Pick<TimerState, "currentTime" | "totalTime">) => {
   const circumference = 2 * Math.PI * radius;
-  const offset = circumference * (1 - currentTime / totalTime);
+  const offset = circumference * (1 - currentTime / totalTime); // Offset changes as currentTime changes
 
   return (
     <>
@@ -33,6 +33,7 @@ const ProgressCircle = ({
           strokeDasharray={circumference}
           strokeDashoffset={offset}
           strokeLinecap="round"
+          className="transition-[stroke-dashoffset] duration-500 ease-linear"
         />
       </svg>
     </>
