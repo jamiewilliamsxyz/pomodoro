@@ -1,12 +1,12 @@
-import { ProgressCircleProps } from "@/types";
+import { TimerState } from "@/types";
+import { PROGRESS_CIRCLE_DIMENSIONS } from "@/lib/constants";
+
+const { radius, stroke, diameter } = PROGRESS_CIRCLE_DIMENSIONS;
 
 const ProgressCircle = ({
   currentTime,
   totalTime,
-  diameter,
-  radius,
-  stroke,
-}: ProgressCircleProps) => {
+}: Pick<TimerState, "currentTime" | "totalTime">) => {
   const circumference = 2 * Math.PI * radius;
   const offset = circumference * (1 - currentTime / totalTime);
 

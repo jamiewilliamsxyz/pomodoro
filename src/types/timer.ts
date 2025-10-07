@@ -26,12 +26,5 @@ export interface FormatTimeReturn {
   seconds: number;
 }
 
-// Timer Components Props Types
+// Timer Components Props Type
 export type TimerProps = TimerState & TimerActions;
-
-export interface ProgressCircleProps
-  extends Pick<TimerState, "currentTime" | "totalTime"> {
-  diameter: number;
-  radius: number;
-  stroke: number;
-}

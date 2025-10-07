@@ -1,12 +1,11 @@
 import { TimerState } from "@/types";
+import { PROGRESS_CIRCLE_DIMENSIONS } from "@/lib/constants";
 import TimerContent from "./TimerContent";
 import ProgressCircle from "./ProgressCircle";
 
-const radius = 122;
-const stroke = 11.25;
-const diameter = radius * 2 + stroke;
-
 type TimerDisplayProps = Omit<TimerState, "isRunning" | "canRestartSession">;
+
+const { diameter } = PROGRESS_CIRCLE_DIMENSIONS;
 
 const TimerDisplay = ({
   sessionType,
@@ -18,13 +17,7 @@ const TimerDisplay = ({
     <div
       className={`relative flex items-center justify-center w-${diameter} h-${diameter}`}
     >
-      <ProgressCircle
-        radius={radius}
-        stroke={stroke}
-        diameter={diameter}
-        currentTime={currentTime}
-        totalTime={totalTime}
-      />
+      <ProgressCircle currentTime={currentTime} totalTime={totalTime} />
       <TimerContent
         sessionType={sessionType}
         roundNumber={roundNumber}
