@@ -25,6 +25,3 @@ export interface FormatTimeReturn {
   minutes: number;
   seconds: number;
 }
-
-// Timer Components Props Type
-export type TimerProps = TimerState & TimerActions;
