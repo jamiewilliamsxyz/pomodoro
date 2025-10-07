@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import Footer from "@/components/layout/Footer";
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -23,8 +25,11 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en" data-theme={theme}>
-      <body className={`${inter.className} antialiased bg-neutral-50`}>
+      <body
+        className={`${inter.className} antialiased bg-neutral-50 h-screen flex flex-col`}
+      >
         {children}
+        <Footer />
       </body>
     </html>
   );
