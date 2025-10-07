@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { TimerRef, SessionType, UseTimerReturn } from "@/types";
 import { useToggle } from "@/hooks";
-import { tempSettings } from "@/app/data/tempSettings";
+import { tempSettings } from "@/data/tempSettings";
 import { get } from "http";
 
 export const useTimer = (): UseTimerReturn => {

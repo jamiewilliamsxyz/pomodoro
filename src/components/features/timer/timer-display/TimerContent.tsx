@@ -1,6 +1,6 @@
 import { formatTime } from "@/lib/formatTime";
 import { TimerState } from "@/types";
-import { tempSettings } from "@/app/data/tempSettings";
+import { tempSettings } from "@/data/tempSettings";
 
 type TimerContentProps = Pick<
   TimerState,
