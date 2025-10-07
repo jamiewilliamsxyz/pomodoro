@@ -1,5 +1,6 @@
 import { formatTime } from "@/lib/formatTime";
 import { TimerState } from "@/types";
+import { tempSettings } from "@/app/data/tempSettings";
 
 type TimerContentProps = Pick<
   TimerState,
@@ -18,7 +19,9 @@ const TimerContent = ({
       <h3 className="text-center text-6xl font-medium tabular-nums">
         {minutes}:{seconds.toString().padStart(2, "0")}
       </h3>
-      <h4 className="text-lg text-neutral-700">{roundNumber}/4</h4>
+      <h4 className="text-lg text-neutral-700">
+        {roundNumber}/{tempSettings.roundsBeforeLongBreak}
+      </h4>
     </div>
   );
 };
