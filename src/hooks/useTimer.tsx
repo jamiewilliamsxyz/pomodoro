@@ -53,7 +53,7 @@ export const useTimer = (): UseTimerReturn => {
 
     // Work out which sessionType to move, set currentTime and set currentRound accordingly
     if (sessionType === "Focus") {
-      if (roundNumber === tempSettings.roundsBeforeLongBreak) {
+      if (roundNumber === tempSettings.roundsUntilLongBreak) {
         setSessionType("Long Break");
         setCurrentTime(tempSettings.longBreakLength);
       } else {
