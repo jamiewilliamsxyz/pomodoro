@@ -13,6 +13,7 @@ const Timer = () => {
     sessionType,
     roundNumber,
     currentTime,
+    totalTime,
     canRestartSession,
   } = useTimer();
 
@@ -21,6 +22,7 @@ const Timer = () => {
       <TimerDisplay
         sessionType={sessionType}
         currentTime={currentTime}
+        totalTime={totalTime}
         roundNumber={roundNumber}
       />
       <TimerControls

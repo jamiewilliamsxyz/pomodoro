@@ -1,15 +1,19 @@
+import { ProgressCircleProps } from "@/types";
+
 const ProgressCircle = ({
+  currentTime,
+  totalTime,
   diameter,
   radius,
   stroke,
-}: {
-  diameter: number;
-  radius: number;
-  stroke: number;
-}) => {
+}: ProgressCircleProps) => {
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference * (1 - currentTime / totalTime);
+
   return (
     <>
-      <svg width={diameter} height={diameter}>
+      <svg width={diameter} height={diameter} className="rotate-[-90deg]">
+        {/* Track Circle */}
         <circle
           cx={radius + stroke / 2}
           cy={radius + stroke / 2}
@@ -18,13 +22,7 @@ const ProgressCircle = ({
           strokeWidth={stroke}
           fill="transparent"
         />
-      </svg>
-
-      <svg
-        className="absolute rotate-[-90deg]"
-        width={diameter}
-        height={diameter}
-      >
+        {/* Indicator Circle */}
         <circle
           cx={radius + stroke / 2}
           cy={radius + stroke / 2}
@@ -32,8 +30,8 @@ const ProgressCircle = ({
           stroke="#6ee7b7"
           strokeWidth={stroke}
           fill="transparent"
-          strokeDasharray={2 * Math.PI * radius}
-          strokeDashoffset={(2 * Math.PI * radius) / 2}
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
           strokeLinecap="round"
         />
       </svg>

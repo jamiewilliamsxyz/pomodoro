@@ -1,17 +1,15 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { TimerRef, SessionType, UseTimerReturn } from "@/types";
 import { useToggle } from "@/hooks";
-
-// Temporary session/rounds lengths
-const focusLength = 25 * 60;
-const shortBreakLength = 5 * 60;
-const longBreakLength = 15 * 60;
-const roundsLength = 4;
+import { tempSettings } from "@/app/data/tempSettings";
 
 export const useTimer = (): UseTimerReturn => {
   // Setting timer state
   const [isRunning, toggleRunning] = useToggle(false);
-  const [currentTime, setCurrentTime] = useState<number>(focusLength);
+  const [currentTime, setCurrentTime] = useState<number>(
+    tempSettings.focusLength
+  );
+  const [totalTime, setTotalTime] = useState<number>(tempSettings.focusLength);
   const [sessionType, setSessionType] = useState<SessionType>("Focus");
   const [roundNumber, setRoundNumber] = useState<number>(1);
   const [canRestartSession, setCanRestartSession] = useState<boolean>(false);
@@ -31,31 +29,54 @@ export const useTimer = (): UseTimerReturn => {
     }
   }, []);
 
+  const getCurrentSessionLength = useCallback((): number => {
+    let sessionDuration = tempSettings.focusLength;
+    switch (sessionType) {
+      case "Short Break":
+        sessionDuration = tempSettings.shortBreakLength;
+        break;
+      case "Long Break":
+        sessionDuration = tempSettings.longBreakLength;
+        break;
+    }
+    return sessionDuration;
+  }, [sessionType]);
+
   const handleSessionEnd = useCallback((): void => {
     // Stop & clear timer
     if (isRunning) toggleRunning();
 
     clearTimer();
 
+    // Set totalTime for progress circle
+    setTotalTime(getCurrentSessionLength());
+
     // Work out which sessionType to move, set currentTime and set currentRound accordingly
     if (sessionType === "Focus") {
-      if (roundNumber === roundsLength) {
+      if (roundNumber === tempSettings.roundsBeforeLongBreak) {
         setSessionType("Long Break");
-        setCurrentTime(longBreakLength);
+        setCurrentTime(tempSettings.longBreakLength);
       } else {
         setSessionType("Short Break");
-        setCurrentTime(shortBreakLength);
+        setCurrentTime(tempSettings.shortBreakLength);
       }
     } else {
       setSessionType("Focus");
-      setCurrentTime(focusLength);
+      setCurrentTime(tempSettings.focusLength);
       setRoundNumber((prev) => prev + 1);
     }
 
     if (sessionType === "Long Break") {
       setRoundNumber(1);
     }
-  }, [isRunning, roundNumber, sessionType, toggleRunning, clearTimer]);
+  }, [
+    isRunning,
+    roundNumber,
+    sessionType,
+    toggleRunning,
+    clearTimer,
+    getCurrentSessionLength,
+  ]);
 
   const restartSession = useCallback((): void => {
     if (isRunning) toggleRunning();
@@ -64,16 +85,16 @@ export const useTimer = (): UseTimerReturn => {
 
     switch (sessionType) {
       case "Focus":
-        setCurrentTime(focusLength);
+        setCurrentTime(tempSettings.focusLength);
         break;
       case "Short Break":
-        setCurrentTime(shortBreakLength);
+        setCurrentTime(tempSettings.shortBreakLength);
         break;
       case "Long Break":
-        setCurrentTime(longBreakLength);
+        setCurrentTime(tempSettings.longBreakLength);
         break;
       default:
-        setCurrentTime(focusLength);
+        setCurrentTime(tempSettings.focusLength);
         break;
     }
   }, [isRunning, sessionType, toggleRunning, setCurrentTime, clearTimer]);
@@ -81,19 +102,6 @@ export const useTimer = (): UseTimerReturn => {
   const skipSession = useCallback((): void => {
     handleSessionEnd();
   }, [handleSessionEnd]);
-
-  const getCurrentSessionLength = useCallback((): number => {
-    let sessionDuration = focusLength;
-    switch (sessionType) {
-      case "Short Break":
-        sessionDuration = shortBreakLength;
-        break;
-      case "Long Break":
-        sessionDuration = longBreakLength;
-        break;
-    }
-    return sessionDuration;
-  }, [sessionType]);
 
   useEffect(() => {
     if (currentTime <= 0 && isRunning) {
@@ -124,6 +132,7 @@ export const useTimer = (): UseTimerReturn => {
     skipSession,
     isRunning,
     currentTime,
+    totalTime,
     sessionType,
     roundNumber,
     canRestartSession,

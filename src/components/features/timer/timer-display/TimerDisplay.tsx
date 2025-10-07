@@ -11,13 +11,20 @@ type TimerDisplayProps = Omit<TimerState, "isRunning" | "canRestartSession">;
 const TimerDisplay = ({
   sessionType,
   currentTime,
+  totalTime,
   roundNumber,
 }: TimerDisplayProps) => {
   return (
     <div
       className={`relative flex items-center justify-center w-${diameter} h-${diameter}`}
     >
-      <ProgressCircle radius={radius} stroke={stroke} diameter={diameter} />
+      <ProgressCircle
+        radius={radius}
+        stroke={stroke}
+        diameter={diameter}
+        currentTime={currentTime}
+        totalTime={totalTime}
+      />
       <TimerContent
         sessionType={sessionType}
         roundNumber={roundNumber}
