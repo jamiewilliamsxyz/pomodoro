@@ -76,7 +76,22 @@ export const useTimer = (): UseTimerReturn => {
     if (isRunning) toggleRunning();
 
     clearTimer();
-  }, [isRunning, toggleRunning, clearTimer]);
+
+    switch (sessionType) {
+      case "Focus":
+        setCurrentTime(tempSettings.focusLength);
+        break;
+      case "Short Break":
+        setCurrentTime(tempSettings.shortBreakLength);
+        break;
+      case "Long Break":
+        setCurrentTime(tempSettings.longBreakLength);
+        break;
+      default:
+        setCurrentTime(tempSettings.focusLength);
+        break;
+    }
+  }, [isRunning, sessionType, toggleRunning, clearTimer]);
 
   const skipSession = useCallback((): void => {
     handleSessionEnd();
