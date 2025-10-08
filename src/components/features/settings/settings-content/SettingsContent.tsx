@@ -1,4 +1,4 @@
-import { renderSettingsOptions } from "@/lib/renderSettingsOptions";
+import { renderSettingsOptions } from "@/lib/settings";
 import type { CurrentSettingsState } from "@/types";
 
 const SettingsContent = ({

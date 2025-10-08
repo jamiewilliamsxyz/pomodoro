@@ -1,4 +1,4 @@
-import { renderSettingsOptionControl } from "@/lib/renderSettingsOptionControl";
+import { renderSettingsOptionControl } from "@/lib/settings";
 import type { SettingsOptionType } from "@/types";
 
 const SettingsOption = ({
