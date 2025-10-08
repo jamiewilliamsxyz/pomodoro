@@ -1,7 +1,7 @@
 import { EyeClosed, PictureInPicture2, Settings } from "lucide-react";
 import IconButton from "../ui/IconButton";
 
-const Topbar = () => {
+const Topbar = ({ toggleSettings }: { toggleSettings: () => void }) => {
   return (
     <nav className="flex justify-between py-5 px-5">
       <div className="flex gap-5">
@@ -13,6 +13,7 @@ const Topbar = () => {
         />
       </div>
       <IconButton
+        onClick={toggleSettings}
         icon={<Settings width={28} height={28} strokeWidth={1.25} />}
       />
     </nav>
