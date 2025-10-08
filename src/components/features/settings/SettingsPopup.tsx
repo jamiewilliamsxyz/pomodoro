@@ -10,7 +10,7 @@ const SettingsPopup = ({
   toggleSettings: () => void;
 }) => {
   return (
-    <Popup isSettingsOpen={isSettingsOpen}>
+    <Popup isSettingsOpen={isSettingsOpen} toggleSettings={toggleSettings}>
       <SettingsTopbar toggleSettings={toggleSettings} />
       <SettingsContent />
     </Popup>
