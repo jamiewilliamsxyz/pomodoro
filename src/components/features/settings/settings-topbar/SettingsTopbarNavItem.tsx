@@ -12,7 +12,6 @@ const SettingsTopbarNavItem = ({
   currentSettings: CurrentSettingsState;
   setCurrentSettings: (id: CurrentSettingsState) => void;
 }) => {
-  console.log(currentSettings, id);
   return (
     <li className="flex flex-col gap-[5px] group">
       <button
