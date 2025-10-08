@@ -23,7 +23,7 @@ const Popup = ({
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="bg-neutral-50 min-w-10/12 max-h-11/12 overflow-y-scroll rounded-xl shadow-sm p-4"
+        className="bg-neutral-50 min-w-10/12 max-w-10/12 max-h-11/12 overflow-y-scroll rounded-xl shadow-sm"
       >
         {children}
       </div>
