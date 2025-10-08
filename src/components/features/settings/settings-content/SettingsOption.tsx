@@ -1,5 +1,5 @@
+import { renderSettingsOptionControl } from "@/lib/renderSettingsOptionControl";
 import type { SettingsOptionType } from "@/types";
-import Slider from "@/components/ui/Slider";
 
 const SettingsOption = ({
   label,
@@ -14,9 +14,9 @@ const SettingsOption = ({
         <label htmlFor={label} className="text-[1.05rem]">
           {label}
         </label>
-        <p className="text-base">25:00</p>
+        <p className="text-base">Current Value</p>
       </div>
-      <Slider />
+      {renderSettingsOptionControl({ type })}
     </div>
   );
 };

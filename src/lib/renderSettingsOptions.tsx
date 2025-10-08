@@ -14,7 +14,7 @@ export const renderSettingsOptions = ({
           <SettingsOption label="Short Break" type="slider" />
           <SettingsOption label="Long Break" type="slider" />
           <SettingsOption label="Rounds" type="slider" />
-          <SettingsOption label="Reset to Defaults" type="text" />
+          <SettingsOption label="Reset to Defaults" type="textButton" />
         </>
       );
     case "Behaviour":
@@ -35,7 +35,7 @@ export const renderSettingsOptions = ({
     case "Appearance":
       return (
         <>
-          <SettingsOption label="Theme" type="theme" />
+          <SettingsOption label="Theme" type="segmentedControl" />
         </>
       );
     default:

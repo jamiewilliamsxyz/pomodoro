@@ -4,4 +4,8 @@ export type CurrentSettingsState =
   | "Notifications"
   | "Appearance";
 
-export type SettingsOptionType = "slider" | "toggle" | "text" | "theme";
+export type SettingsOptionType =
+  | "slider"
+  | "toggle"
+  | "textButton"
+  | "segmentedControl";
