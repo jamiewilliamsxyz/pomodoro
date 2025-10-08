@@ -3,3 +3,5 @@ export type CurrentSettingsState =
   | "Behaviour"
   | "Notifications"
   | "Appearance";
+
+export type SettingsOptionType = "slider" | "toggle" | "text" | "theme";

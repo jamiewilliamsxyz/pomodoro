@@ -16,12 +16,14 @@ const SettingsPopup = ({
 
   return (
     <Popup isSettingsOpen={isSettingsOpen} toggleSettings={toggleSettings}>
-      <SettingsTopbar
-        toggleSettings={toggleSettings}
-        currentSettings={currentSettings}
-        setCurrentSettings={setCurrentSettings}
-      />
-      <SettingsContent />
+      <div className="flex flex-col gap-3">
+        <SettingsTopbar
+          toggleSettings={toggleSettings}
+          currentSettings={currentSettings}
+          setCurrentSettings={setCurrentSettings}
+        />
+        <SettingsContent currentSettings={currentSettings} />
+      </div>
     </Popup>
   );
 };
