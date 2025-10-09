@@ -21,7 +21,7 @@ export const renderOptionControl = ({
           max={max as number}
           onChange={onChange!}
         />
-      ); // Telling TS that onChange won't be null/undefined
+      ); // Telling TS that onChange won't be null/undefined by using "!"
     case "toggle":
       return <Toggle />;
     case "segmentedControl":
