@@ -1,13 +1,40 @@
+import { useSettings } from "@/context/SettingsContext";
 import Option from "../Option";
 
 const TimerOptions = () => {
+  const { settings } = useSettings();
+
   return (
     <>
-      <Option label="Focus" type="slider" />
-      <Option label="Short Break" type="slider" />
-      <Option label="Long Break" type="slider" />
-      <Option label="Rounds" type="slider" />
-      <Option label="Reset to Defaults" type="textButton" />
+      <Option
+        label="focus"
+        type="slider"
+        value={settings.timer.focus}
+        min={1}
+        max={90}
+      />
+      <Option
+        label="shortBreak"
+        type="slider"
+        value={settings.timer.shortBreak}
+        min={1}
+        max={90}
+      />
+      <Option
+        label="longBreak"
+        type="slider"
+        value={settings.timer.longBreak}
+        min={1}
+        max={90}
+      />
+      <Option
+        label="rounds"
+        type="slider"
+        value={settings.timer.rounds}
+        min={1}
+        max={12}
+      />
+      <Option label="resetToDefaults" type="textButton" />
     </>
   );
 };

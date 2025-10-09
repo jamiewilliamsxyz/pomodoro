@@ -3,9 +3,9 @@ import Option from "../Option";
 const NotificationOptions = () => {
   return (
     <>
-      <Option label="Enable Notifications" type="toggle" />
-      <Option label="Notification Sound" type="toggle" />
-      <Option label="Notification Volume" type="slider" />
+      <Option label="enable" type="toggle" />
+      <Option label="sound" type="toggle" />
+      <Option label="volume" type="slider" />
     </>
   );
 };

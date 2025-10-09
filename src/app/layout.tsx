@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Theme } from "@/types";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SettingsProvider } from "@/context/SettingsContext";
 import TopbarClient from "@/components/layout/TopbarClient";
 import Footer from "@/components/layout/Footer";
 
@@ -15,8 +17,7 @@ export const metadata: Metadata = {
   description: "A simple Pomodoro timer app built with Next.js and TypeScript.",
 };
 
-type Theme = "" | "dark";
-const theme: Theme = "";
+const theme: Theme = "system";
 
 const RootLayout = ({
   children,
@@ -28,8 +29,10 @@ const RootLayout = ({
       <body
         className={`${inter.className} antialiased bg-neutral-50 h-screen flex flex-col`}
       >
-        <TopbarClient />
-        {children}
+        <SettingsProvider>
+          <TopbarClient />
+          {children}
+        </SettingsProvider>
         <Footer />
       </body>
     </html>

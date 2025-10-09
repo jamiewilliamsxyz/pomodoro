@@ -3,8 +3,8 @@ import Option from "../Option";
 const BehaviourOptions = () => {
   return (
     <>
-      <Option label="Auto-Start Sessions" type="toggle" />
-      <Option label="Display Quotes" type="toggle" />
+      <Option label="autoStart" type="toggle" />
+      <Option label="displayQuotes" type="toggle" />
     </>
   );
 };

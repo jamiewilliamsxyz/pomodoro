@@ -1,13 +1,20 @@
 import { renderOptionControl } from "@/lib/settings/renderOptionControl";
-import type { SettingsOptionType } from "@/types";
+import type { OptionProps } from "@/types";
+import { useSettings } from "@/context/SettingsContext";
 
-const Option = ({
-  label,
-  type,
-}: {
-  label: string;
-  type: SettingsOptionType;
-}) => {
+const Option = ({ label, type, value, min, max }: OptionProps) => {
+  const { dispatch } = useSettings();
+
+  const handleChange = (newValue: number | boolean | string) => {
+    // Change this if/dispatch when adding the other settings
+    if (type === "slider") {
+      dispatch({
+        type: "UPDATE_TIMER",
+        payload: { [label]: newValue },
+      });
+    }
+  };
+
   return (
     <>
       {type === "textButton" ? (
@@ -20,9 +27,16 @@ const Option = ({
             <label htmlFor={label} className="text-[1.05rem]">
               {label}
             </label>
-            <p className="text-base">Current Value</p>
+            <p className="text-base">{value}</p>
           </div>
-          {renderOptionControl({ type, label })}
+          {renderOptionControl({
+            type,
+            label,
+            value,
+            min,
+            max,
+            onChange: handleChange,
+          })}
         </div>
       )}
     </>

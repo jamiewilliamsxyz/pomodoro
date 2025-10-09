@@ -3,7 +3,7 @@ import Option from "../Option";
 const AppearanceOptions = () => {
   return (
     <>
-      <Option label="Theme" type="segmentedControl" />
+      <Option label="theme" type="segmentedControl" />
     </>
   );
 };
