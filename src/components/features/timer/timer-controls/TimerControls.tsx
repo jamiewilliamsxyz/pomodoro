@@ -1,4 +1,4 @@
-import { TimerActions, TimerState } from "@/types";
+import type { TimerActions, TimerState } from "@/types";
 import RestartButton from "./RestartButton";
 import SkipButton from "./SkipButton";
 import StartStopButton from "./StartStopButton";

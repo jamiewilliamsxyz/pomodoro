@@ -1,4 +1,4 @@
-import { TimerState } from "@/types";
+import type { TimerState } from "@/types";
 import { PROGRESS_CIRCLE_DIMENSIONS } from "@/lib/constants";
 import TimerContent from "./TimerContent";
 import ProgressCircle from "./ProgressCircle";

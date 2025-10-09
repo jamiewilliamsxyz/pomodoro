@@ -1,6 +1,5 @@
 import { SkipForward } from "lucide-react";
-
-import { TimerActions } from "@/types";
+import type { TimerActions } from "@/types";
 
 type SkipButtonProps = Pick<TimerActions, "skipSession">;
 

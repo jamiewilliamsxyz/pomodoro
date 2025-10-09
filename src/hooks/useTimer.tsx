@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { TimerRef, SessionType, UseTimerReturn } from "@/types";
+import type { TimerRef, SessionType, UseTimerReturn } from "@/types";
 import { useToggle } from "@/hooks";
 import { tempSettings } from "@/data/tempSettings";
 

@@ -1,5 +1,5 @@
 import { RotateCcw } from "lucide-react";
-import { TimerActions, TimerState } from "@/types";
+import type { TimerActions, TimerState } from "@/types";
 
 type RestartButtonProps = Pick<TimerActions, "restartSession"> &
   Pick<TimerState, "canRestartSession">;

@@ -1,5 +1,5 @@
 import { Play, Pause } from "lucide-react";
-import { TimerActions, TimerState } from "@/types";
+import type { TimerActions, TimerState } from "@/types";
 
 type StartStopButtonProps = Pick<TimerActions, "startStop"> &
   Pick<TimerState, "isRunning">;
