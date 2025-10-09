@@ -16,7 +16,7 @@ const SettingsOption = ({
         </label>
         <p className="text-base">Current Value</p>
       </div>
-      {renderSettingsOptionControl({ type })}
+      {renderSettingsOptionControl({ type, label })}
     </div>
   );
 };

@@ -6,12 +6,14 @@ import SettingsOption from "@/components/features/settings/settings-content/Sett
 
 export const renderSettingsOptionControl = ({
   type,
+  label,
 }: {
   type: SettingsOptionType;
+  label: string;
 }) => {
   switch (type) {
     case "slider":
-      return <Slider />;
+      return <Slider id={label} />;
     case "toggle":
       return <Toggle />;
     case "segmentedControl":

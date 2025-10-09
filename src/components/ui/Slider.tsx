@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "@/styles/slider.css";
 
-const Slider = () => {
+const Slider = ({ id }: { id: string }) => {
   // Temporary
   const [value, setValue] = useState(50);
 
@@ -10,6 +10,7 @@ const Slider = () => {
       type="range"
       min="0"
       max="100"
+      id={id}
       value={value}
       onChange={(e) => setValue(Number(e.target.value))}
       style={{ "--value": `${value}%` } as React.CSSProperties}
