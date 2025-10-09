@@ -1,7 +1,6 @@
 import type { SettingsOptionType, CurrentSettingsState } from "@/types";
 import Slider from "@/components/ui/Slider";
 import Toggle from "@/components/ui/Toggle";
-import TextButton from "@/components/ui/TextButton";
 import SegmentedControl from "@/components/ui/SegmentedControl";
 import SettingsOption from "@/components/features/settings/settings-content/SettingsOption";
 
@@ -15,8 +14,6 @@ export const renderSettingsOptionControl = ({
       return <Slider />;
     case "toggle":
       return <Toggle />;
-    case "textButton":
-      return <TextButton />;
     case "segmentedControl":
       return <SegmentedControl />;
     default:
@@ -43,7 +40,10 @@ export const renderSettingsOptions = ({
           <SettingsOption label="Short Break" type="slider" />
           <SettingsOption label="Long Break" type="slider" />
           <SettingsOption label="Rounds" type="slider" />
-          <SettingsOption label="Reset to Defaults" type="textButton" />
+          {/* Move this */}
+          <button className="text-[1.05rem] text-neutral-700 text-left mt-1 hover:text-neutral-500 cursor-pointer w-fit">
+            Reset to Defaults
+          </button>
         </>
       );
     case "Behaviour":
@@ -58,7 +58,7 @@ export const renderSettingsOptions = ({
         <>
           <SettingsOption label="Enable Notifications" type="toggle" />
           <SettingsOption label="Notification Sound" type="toggle" />
-          <SettingsOption label="Reset to Default" type="slider" />
+          <SettingsOption label="Notification Volume" type="slider" />
         </>
       );
     case "Appearance":
