@@ -14,7 +14,10 @@ const SettingsTopbar = ({
   return (
     <nav className="flex">
       <div className="flex py-3 px-4">
-        <button onClick={toggleSettings} className="text-red-400">
+        <button
+          onClick={toggleSettings}
+          className="text-red-400 hover:text-red-300 transition-colors duration-200 cursor-pointer"
+        >
           <X width={26} height={26} strokeWidth={1.5} />
         </button>
       </div>
