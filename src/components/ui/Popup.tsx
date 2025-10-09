@@ -23,7 +23,7 @@ const Popup = ({
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="relative top-[8vh] bg-neutral-50 min-w-10/12 min-h-fit h-fit max-h-9/12 overflow-y-auto rounded-xl shadow-sm transition-all duration-200"
+        className="relative top-[8vh] bg-neutral-50 min-w-10/12 min-h-fit h-fit max-h-9/12 overflow-y-auto rounded-xl shadow-sm"
       >
         {children}
       </div>
