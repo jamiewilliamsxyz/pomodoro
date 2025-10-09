@@ -2,7 +2,7 @@
 
 import { useToggle } from "@/hooks";
 import Topbar from "./Topbar";
-import SettingsPopup from "../features/settings/SettingsPopup";
+import SettingsModal from "../features/settings/SettingsModal";
 
 /*
   Making the root layout a client component would make its children client components too,
@@ -15,7 +15,7 @@ const TopbarClient = () => {
   return (
     <>
       <Topbar toggleSettings={toggleSettings} />
-      <SettingsPopup
+      <SettingsModal
         isSettingsOpen={isSettingsOpen}
         toggleSettings={toggleSettings}
       />
