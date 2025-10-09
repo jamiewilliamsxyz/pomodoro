@@ -1,4 +1,5 @@
 import "@/styles/slider.css";
+import { calculatePercentage } from "@/lib/calculatePercentage";
 
 const Slider = ({
   id,
@@ -13,6 +14,7 @@ const Slider = ({
   max: number;
   onChange: (value: number) => void;
 }) => {
+  const percentage = calculatePercentage(value, min, max);
   return (
     <input
       type="range"
@@ -21,7 +23,7 @@ const Slider = ({
       id={id}
       value={value}
       onChange={(e) => onChange(Number(e.target.value))}
-      style={{ "--value": `${value}%` } as React.CSSProperties}
+      style={{ "--value": `${percentage}%` } as React.CSSProperties}
       className="slider w-full h-1.5 rounded-full cursor-pointer appearance-none bg-neutral-300"
     />
   );
