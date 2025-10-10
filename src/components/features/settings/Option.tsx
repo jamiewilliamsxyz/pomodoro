@@ -1,5 +1,5 @@
 import type { OptionProps } from "@/types";
-import { useSettings } from "@/context/SettingsContext";
+import { useSettings } from "@/context/settingsContext";
 import { renderOptionControl } from "@/lib/settings/renderOptionControl";
 import { formatValue } from "@/lib/settings/formatValue";
 import { dispatchSettingChange } from "@/lib/settings/dispatchSettingChange";

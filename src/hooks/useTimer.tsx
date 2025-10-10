@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import type { TimerRef, SessionType, UseTimerReturn } from "@/types";
 import { useToggle } from "@/hooks";
-import { useSettings } from "@/context/SettingsContext";
+import { useSettings } from "@/context/settingsContext";
 
 export const useTimer = (): UseTimerReturn => {
   const { settings } = useSettings();

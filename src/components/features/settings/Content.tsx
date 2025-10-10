@@ -1,5 +1,5 @@
 import { renderSectionOptions } from "@/lib/settings/renderSectionOptions";
-import { useSettings } from "@/context/SettingsContext";
+import { useSettings } from "@/context/settingsContext";
 import { capitaliseFirstLetter } from "@/lib/capitaliseFirstLetter";
 
 const Content = () => {

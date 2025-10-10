@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Theme } from "@/types";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SettingsProvider } from "@/context/SettingsContext";
+import { SettingsProvider } from "@/context/settingsContext";
 import TopbarClient from "@/components/layout/TopbarClient";
 import Footer from "@/components/layout/Footer";
 

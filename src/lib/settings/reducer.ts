@@ -1,5 +1,5 @@
 import type { SettingsState, SettingsAction } from "@/types";
-import { defaultSettings } from "@/context/SettingsContext";
+import { defaultSettings } from "@/context/settingsContext";
 
 export const settingsReducer = (
   state: SettingsState,

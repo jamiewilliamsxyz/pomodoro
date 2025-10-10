@@ -1,4 +1,4 @@
-import { useSettings } from "@/context/SettingsContext";
+import { useSettings } from "@/context/settingsContext";
 import Option from "../Option";
 
 const TimerOptions = () => {

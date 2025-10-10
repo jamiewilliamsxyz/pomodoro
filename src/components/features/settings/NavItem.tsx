@@ -1,6 +1,6 @@
 import { JSX } from "react";
 import type { ActiveSectionState } from "@/types";
-import { useSettings } from "@/context/SettingsContext";
+import { useSettings } from "@/context/settingsContext";
 
 const NavItem = ({
   icon,
