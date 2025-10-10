@@ -10,7 +10,7 @@ const Content = () => {
       <h5 className="font-medium text-lg text-neutral-800">
         {capitaliseFirstLetter(activeSection)} Settings
       </h5>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-4">
         {renderSectionOptions({ activeSection })}
       </div>
     </div>
