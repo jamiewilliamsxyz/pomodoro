@@ -1,19 +1,11 @@
-import { renderOptionControl } from "@/lib/settings/renderOptionControl";
 import type { OptionProps } from "@/types";
 import { useSettings } from "@/context/SettingsContext";
+import { renderOptionControl } from "@/lib/settings/renderOptionControl";
 import { formatValue } from "@/lib/settings/formatValue";
+import { dispatchSettingChange } from "@/lib/settings/dispatchSettingChange";
 
 const Option = ({ title, label, type, value, min, max }: OptionProps) => {
   const { dispatch, activeSection } = useSettings();
-
-  const handleChange = (newValue: number | boolean | string) => {
-    if (activeSection === "timer") {
-      dispatch({
-        type: "UPDATE_TIMER",
-        payload: { [label]: newValue },
-      });
-    }
-  };
 
   return type === "textButton" ? (
     <button className="text-[1.05rem] text-neutral-700 text-left mt-1 hover:text-neutral-500 cursor-pointer w-fit">
@@ -34,7 +26,13 @@ const Option = ({ title, label, type, value, min, max }: OptionProps) => {
         value,
         min,
         max,
-        onChange: handleChange,
+        onChange: (value) =>
+          dispatchSettingChange({
+            activeSection,
+            label,
+            value,
+            dispatch,
+          }),
       })}
     </div>
   );
