@@ -20,7 +20,11 @@ const Option = ({ title, label, type, value, min, max }: OptionProps) => {
         <label htmlFor={label} className="text-[1.05rem]">
           {title}
         </label>
-        <p className="text-base">{formatValue({ value, label })}</p>
+        <div className="bg-[#ececec] rounded-sm px-1.5 flex items-center">
+          <p className="text-[0.95rem] leading-[0.95rem] font-mono">
+            {formatValue({ value, label })}
+          </p>
+        </div>
       </div>
       {renderOptionControl({
         title,
