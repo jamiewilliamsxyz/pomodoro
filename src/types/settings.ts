@@ -24,6 +24,7 @@ export interface OptionProps {
 // SettingsContext/Reducer Types
 export type SettingsAction =
   | { type: "UPDATE_TIMER"; payload: Partial<SettingsState["timer"]> }
+  | { type: "RESET_TIMER_SETTINGS" }
   | { type: "UPDATE_BEHAVIOUR"; payload: Partial<SettingsState["behaviour"]> }
   | {
       type: "UPDATE_NOTIFICATIONS";

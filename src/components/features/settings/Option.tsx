@@ -8,7 +8,10 @@ const Option = ({ title, label, type, value, min, max }: OptionProps) => {
   const { dispatch, activeSection } = useSettings();
 
   return type === "textButton" ? (
-    <button className="text-[1.05rem] text-neutral-700 text-left mt-1 hover:text-neutral-500 cursor-pointer w-fit">
+    <button
+      onClick={() => dispatch({ type: "RESET_TIMER_SETTINGS" })}
+      className="text-[1.05rem] text-neutral-700 text-left mt-1 hover:text-neutral-500 cursor-pointer w-fit"
+    >
       Reset to Defaults
     </button>
   ) : (
