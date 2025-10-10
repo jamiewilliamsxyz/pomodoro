@@ -148,6 +148,22 @@ export const useTimer = (): UseTimerReturn => {
     setTotalTime(getCurrentSessionLength());
   }, [sessionType, getCurrentSessionLength]);
 
+  // Restart session if the active session's length setting changes
+  useEffect(() => {
+    if (sessionType === "Focus") restartSession();
+    // eslint-disable-next-line
+  }, [focus]);
+
+  useEffect(() => {
+    if (sessionType === "Short Break") restartSession();
+    // eslint-disable-next-line
+  }, [shortBreak]);
+
+  useEffect(() => {
+    if (sessionType === "Long Break") restartSession();
+    // eslint-disable-next-line
+  }, [longBreak]);
+
   // Returning functions/state to use in Timer components
   return {
     startStop,
