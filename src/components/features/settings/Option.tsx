@@ -4,11 +4,10 @@ import { useSettings } from "@/context/SettingsContext";
 import { formatValue } from "@/lib/settings/formatValue";
 
 const Option = ({ title, label, type, value, min, max }: OptionProps) => {
-  const { dispatch } = useSettings();
+  const { dispatch, activeSection } = useSettings();
 
   const handleChange = (newValue: number | boolean | string) => {
-    // Change this if/dispatch when adding the other settings
-    if (type === "slider") {
+    if (activeSection === "Timer") {
       dispatch({
         type: "UPDATE_TIMER",
         payload: { [label]: newValue },

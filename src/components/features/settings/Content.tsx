@@ -1,7 +1,9 @@
 import { renderSectionOptions } from "@/lib/settings/renderSectionOptions";
-import type { ActiveSectionState } from "@/types";
+import { useSettings } from "@/context/SettingsContext";
 
-const Content = ({ activeSection }: { activeSection: ActiveSectionState }) => {
+const Content = () => {
+  const { activeSection } = useSettings();
+
   return (
     <div className="p-4 flex flex-col gap-3">
       <h5 className="font-medium text-lg text-neutral-800">

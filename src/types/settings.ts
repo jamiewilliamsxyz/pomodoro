@@ -35,6 +35,8 @@ export type SettingsAction =
     };
 
 export type SettingsContextType = {
+  activeSection: ActiveSectionState;
+  setActiveSection: React.Dispatch<React.SetStateAction<ActiveSectionState>>;
   settings: SettingsState;
   dispatch: React.Dispatch<SettingsAction>;
 };

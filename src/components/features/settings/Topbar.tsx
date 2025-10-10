@@ -19,15 +19,7 @@ const sections: { id: ActiveSectionState; icon: JSX.Element }[] = [
   },
 ];
 
-const Topbar = ({
-  toggleSettings,
-  setActiveSection,
-  activeSection,
-}: {
-  toggleSettings: () => void;
-  setActiveSection: (sectionId: ActiveSectionState) => void;
-  activeSection: ActiveSectionState;
-}) => {
+const Topbar = ({ toggleSettings }: { toggleSettings: () => void }) => {
   return (
     <nav className="flex">
       <div className="flex py-3 px-4">
@@ -45,8 +37,6 @@ const Topbar = ({
             key={section.id}
             sectionId={section.id}
             icon={section.icon}
-            activeSection={activeSection}
-            setActiveSection={setActiveSection}
           />
         ))}
       </ul>

@@ -1,7 +1,11 @@
 "use client";
 
-import { useReducer, createContext, use } from "react";
-import type { SettingsState, SettingsContextType } from "@/types";
+import { useState, useReducer, createContext, use } from "react";
+import type {
+  SettingsState,
+  SettingsContextType,
+  ActiveSectionState,
+} from "@/types";
 import { settingsReducer } from "@/lib/settings/reducer";
 
 const defaultSettings: SettingsState = {
@@ -20,10 +24,17 @@ export const SettingsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [activeSection, setActiveSection] =
+    useState<ActiveSectionState>("Timer");
+
   const [settings, dispatch] = useReducer(settingsReducer, defaultSettings);
 
   return (
-    <SettingsContext value={{ settings, dispatch }}>{children}</SettingsContext>
+    <SettingsContext
+      value={{ activeSection, setActiveSection, settings, dispatch }}
+    >
+      {children}
+    </SettingsContext>
   );
 };
 

@@ -1,17 +1,16 @@
 import { JSX } from "react";
 import type { ActiveSectionState } from "@/types";
+import { useSettings } from "@/context/SettingsContext";
 
 const NavItem = ({
   icon,
   sectionId,
-  activeSection,
-  setActiveSection,
 }: {
   icon: JSX.Element;
   sectionId: ActiveSectionState;
-  activeSection: ActiveSectionState;
-  setActiveSection: (sectionId: ActiveSectionState) => void;
 }) => {
+  const { activeSection, setActiveSection } = useSettings();
+
   return (
     <li className="flex flex-col gap-[5px] group">
       <button
