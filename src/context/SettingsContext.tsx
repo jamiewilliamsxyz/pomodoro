@@ -10,7 +10,7 @@ import { settingsReducer } from "@/lib/settings/reducer";
 
 const defaultSettings: SettingsState = {
   timer: { focus: 25, shortBreak: 5, longBreak: 15, rounds: 4 },
-  behaviour: { autoStart: true, displayQuotes: false },
+  behaviour: { autoStart: false, displayQuotes: true },
   notifications: { enable: true, sound: true, volume: 50 },
   appearance: { theme: "system" },
 };
