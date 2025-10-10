@@ -10,13 +10,13 @@ export const renderSectionOptions = ({
   activeSection: ActiveSectionState;
 }) => {
   switch (activeSection) {
-    case "Timer":
+    case "timer":
       return <TimerOptions />;
-    case "Behaviour":
+    case "behaviour":
       return <BehaviourOptions />;
-    case "Notifications":
+    case "notifications":
       return <NotificationOptions />;
-    case "Appearance":
+    case "appearance":
       return <AppearanceOptions />;
     default:
       return (

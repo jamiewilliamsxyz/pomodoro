@@ -4,17 +4,17 @@ import type { ActiveSectionState } from "@/types";
 import NavItem from "./NavItem";
 
 const sections: { id: ActiveSectionState; icon: JSX.Element }[] = [
-  { id: "Timer", icon: <Clock width={24} height={24} strokeWidth={1.25} /> },
+  { id: "timer", icon: <Clock width={24} height={24} strokeWidth={1.25} /> },
   {
-    id: "Behaviour",
+    id: "behaviour",
     icon: <SlidersHorizontal width={24} height={24} strokeWidth={1.25} />,
   },
   {
-    id: "Notifications",
+    id: "notifications",
     icon: <Bell width={24} height={24} strokeWidth={1.25} />,
   },
   {
-    id: "Appearance",
+    id: "appearance",
     icon: <Palette width={24} height={24} strokeWidth={1.25} />,
   },
 ];

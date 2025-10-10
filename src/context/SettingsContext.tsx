@@ -25,7 +25,7 @@ export const SettingsProvider = ({
   children: React.ReactNode;
 }) => {
   const [activeSection, setActiveSection] =
-    useState<ActiveSectionState>("Timer");
+    useState<ActiveSectionState>("timer");
 
   const [settings, dispatch] = useReducer(settingsReducer, defaultSettings);
 

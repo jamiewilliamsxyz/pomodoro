@@ -1,9 +1,9 @@
 // Settings Component Types
 export type ActiveSectionState =
-  | "Timer"
-  | "Behaviour"
-  | "Notifications"
-  | "Appearance";
+  | "timer"
+  | "behaviour"
+  | "notifications"
+  | "appearance";
 
 export type SettingsOptionType =
   | "slider"

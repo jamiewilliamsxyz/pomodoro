@@ -7,7 +7,7 @@ const Option = ({ title, label, type, value, min, max }: OptionProps) => {
   const { dispatch, activeSection } = useSettings();
 
   const handleChange = (newValue: number | boolean | string) => {
-    if (activeSection === "Timer") {
+    if (activeSection === "timer") {
       dispatch({
         type: "UPDATE_TIMER",
         payload: { [label]: newValue },
