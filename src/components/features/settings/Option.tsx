@@ -1,6 +1,7 @@
 import { renderOptionControl } from "@/lib/settings/renderOptionControl";
 import type { OptionProps } from "@/types";
 import { useSettings } from "@/context/SettingsContext";
+import { formatValue } from "@/lib/settings/formatValue";
 
 const Option = ({ title, label, type, value, min, max }: OptionProps) => {
   const { dispatch } = useSettings();
@@ -27,7 +28,7 @@ const Option = ({ title, label, type, value, min, max }: OptionProps) => {
             <label htmlFor={label} className="text-[1.05rem]">
               {title}
             </label>
-            <p className="text-base">{value}</p>
+            <p className="text-base">{formatValue({ value, label })}</p>
           </div>
           {renderOptionControl({
             title,
