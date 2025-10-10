@@ -1,10 +1,12 @@
-import Option from "../Option";
+// import Option from "../Option";
 
 const BehaviourOptions = () => {
   return (
     <>
-      <Option label="autoStart" type="toggle" />
-      <Option label="displayQuotes" type="toggle" />
+      {/*
+        <Option label="autoStart" type="toggle" />
+        <Option label="displayQuotes" type="toggle" />
+      */}
     </>
   );
 };

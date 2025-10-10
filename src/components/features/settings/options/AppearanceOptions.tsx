@@ -1,9 +1,11 @@
-import Option from "../Option";
+// import Option from "../Option";
 
 const AppearanceOptions = () => {
   return (
     <>
-      <Option label="theme" type="segmentedControl" />
+      {/*
+        <Option label="theme" type="segmentedControl" />
+      */}
     </>
   );
 };
