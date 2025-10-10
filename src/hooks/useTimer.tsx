@@ -1,15 +1,21 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import type { TimerRef, SessionType, UseTimerReturn } from "@/types";
 import { useToggle } from "@/hooks";
-import { tempSettings } from "@/data/tempSettings";
+import { useSettings } from "@/context/SettingsContext";
 
 export const useTimer = (): UseTimerReturn => {
+  const { settings } = useSettings();
+
+  const { focus, shortBreak, longBreak, rounds } = settings.timer;
+
+  const focusSeconds = focus * 60;
+  const shortBreakSeconds = shortBreak * 60;
+  const longBreakSeconds = longBreak * 60;
+
   // Setting timer state
   const [isRunning, toggleRunning] = useToggle(false);
-  const [currentTime, setCurrentTime] = useState<number>(
-    tempSettings.focusLength
-  );
-  const [totalTime, setTotalTime] = useState<number>(tempSettings.focusLength);
+  const [currentTime, setCurrentTime] = useState<number>(focusSeconds);
+  const [totalTime, setTotalTime] = useState<number>(focusSeconds);
   const [sessionType, setSessionType] = useState<SessionType>("Focus");
   const [roundNumber, setRoundNumber] = useState<number>(1);
   const [canRestartSession, setCanRestartSession] = useState<boolean>(false);
@@ -30,17 +36,17 @@ export const useTimer = (): UseTimerReturn => {
   }, []);
 
   const getCurrentSessionLength = useCallback((): number => {
-    let sessionDuration = tempSettings.focusLength;
+    let sessionDuration = focusSeconds;
     switch (sessionType) {
       case "Short Break":
-        sessionDuration = tempSettings.shortBreakLength;
+        sessionDuration = shortBreakSeconds;
         break;
       case "Long Break":
-        sessionDuration = tempSettings.longBreakLength;
+        sessionDuration = longBreakSeconds;
         break;
     }
     return sessionDuration;
-  }, [sessionType]);
+  }, [focusSeconds, shortBreakSeconds, longBreakSeconds, sessionType]);
 
   const handleSessionEnd = useCallback((): void => {
     // Stop & clear timer
@@ -50,26 +56,36 @@ export const useTimer = (): UseTimerReturn => {
 
     // Work out which sessionType to move, set currentTime and set currentRound accordingly
     if (sessionType === "Focus") {
-      if (roundNumber === tempSettings.roundsUntilLongBreak) {
+      if (roundNumber === rounds) {
         setSessionType("Long Break");
-        setCurrentTime(tempSettings.longBreakLength);
-        setTotalTime(tempSettings.longBreakLength);
+        setCurrentTime(longBreakSeconds);
+        setTotalTime(longBreakSeconds);
       } else {
         setSessionType("Short Break");
-        setCurrentTime(tempSettings.shortBreakLength);
-        setTotalTime(tempSettings.shortBreakLength);
+        setCurrentTime(shortBreakSeconds);
+        setTotalTime(shortBreakSeconds);
       }
     } else {
       setSessionType("Focus");
-      setCurrentTime(tempSettings.focusLength);
-      setTotalTime(tempSettings.focusLength);
+      setCurrentTime(focusSeconds);
+      setTotalTime(focusSeconds);
       setRoundNumber((prev) => prev + 1);
     }
 
     if (sessionType === "Long Break") {
       setRoundNumber(1);
     }
-  }, [isRunning, roundNumber, sessionType, toggleRunning, clearTimer]);
+  }, [
+    focusSeconds,
+    shortBreakSeconds,
+    longBreakSeconds,
+    rounds,
+    isRunning,
+    roundNumber,
+    sessionType,
+    toggleRunning,
+    clearTimer,
+  ]);
 
   const restartSession = useCallback((): void => {
     if (isRunning) toggleRunning();
@@ -78,19 +94,27 @@ export const useTimer = (): UseTimerReturn => {
 
     switch (sessionType) {
       case "Focus":
-        setCurrentTime(tempSettings.focusLength);
+        setCurrentTime(focusSeconds);
         break;
       case "Short Break":
-        setCurrentTime(tempSettings.shortBreakLength);
+        setCurrentTime(shortBreakSeconds);
         break;
       case "Long Break":
-        setCurrentTime(tempSettings.longBreakLength);
+        setCurrentTime(longBreakSeconds);
         break;
       default:
-        setCurrentTime(tempSettings.focusLength);
+        setCurrentTime(focusSeconds);
         break;
     }
-  }, [isRunning, sessionType, toggleRunning, clearTimer]);
+  }, [
+    focusSeconds,
+    shortBreakSeconds,
+    longBreakSeconds,
+    isRunning,
+    sessionType,
+    toggleRunning,
+    clearTimer,
+  ]);
 
   const skipSession = useCallback((): void => {
     handleSessionEnd();
