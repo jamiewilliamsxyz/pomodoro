@@ -12,6 +12,7 @@ export type SettingsOptionType =
   | "segmentedControl";
 
 export interface OptionProps {
+  title: string;
   label: string;
   type: SettingsOptionType;
   value?: number | boolean | string;

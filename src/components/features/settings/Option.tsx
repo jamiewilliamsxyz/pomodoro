@@ -2,7 +2,7 @@ import { renderOptionControl } from "@/lib/settings/renderOptionControl";
 import type { OptionProps } from "@/types";
 import { useSettings } from "@/context/SettingsContext";
 
-const Option = ({ label, type, value, min, max }: OptionProps) => {
+const Option = ({ title, label, type, value, min, max }: OptionProps) => {
   const { dispatch } = useSettings();
 
   const handleChange = (newValue: number | boolean | string) => {
@@ -25,11 +25,12 @@ const Option = ({ label, type, value, min, max }: OptionProps) => {
         <div className="flex flex-col gap-3">
           <div className="flex justify-between text-neutral-700">
             <label htmlFor={label} className="text-[1.05rem]">
-              {label}
+              {title}
             </label>
             <p className="text-base">{value}</p>
           </div>
           {renderOptionControl({
+            title,
             type,
             label,
             value,
