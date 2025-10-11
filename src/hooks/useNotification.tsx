@@ -13,7 +13,7 @@ export const useNotification = (): UseNotificationReturn => {
           await Notification.requestPermission();
 
         if (permission === "granted")
-          new Notification("Notifications have been enabled");
+          console.info("Notification permission granted");
       } catch (err: unknown) {
         if (err instanceof Error) {
           console.error("Notification permission request failed:", err);
