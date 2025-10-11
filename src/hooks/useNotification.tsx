@@ -24,6 +24,12 @@ export const useNotification = (): UseNotificationReturn => {
     }
   };
 
+  const playSound = () => {
+    const sound = new Audio("/sounds/notification.mp3");
+    sound.volume = 0.5;
+    sound.play();
+  };
+
   const notify = ({ currentSession, nextDuration, nextBreak }: NotifyProps) => {
     let title: string;
     let body: string;
@@ -46,6 +52,8 @@ export const useNotification = (): UseNotificationReturn => {
       icon: "/icons/icon.png",
       badge: "/icons/badge.png",
     });
+
+    playSound();
   };
 
   return {
