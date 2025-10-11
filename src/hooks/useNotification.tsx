@@ -43,6 +43,8 @@ export const useNotification = (): UseNotificationReturn => {
     new Notification(title, {
       body: body,
       tag: "timer",
+      icon: "/icon.png",
+      badge: "/badge.png",
     });
   };
 
