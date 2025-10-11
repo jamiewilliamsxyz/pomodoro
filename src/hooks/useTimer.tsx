@@ -5,7 +5,7 @@ import { useSettings } from "@/context/settingsContext";
 
 export const useTimer = (): UseTimerReturn => {
   const { settings } = useSettings();
-  const { requestPermission } = useNotification();
+  const { requestPermission, notify } = useNotification();
 
   const { focus, shortBreak, longBreak, rounds } = settings.timer;
 
@@ -58,21 +58,31 @@ export const useTimer = (): UseTimerReturn => {
   const handleSessionEnd = useCallback((): void => {
     // Stop & clear timer
     if (isRunning) toggleRunning();
-
     clearTimer();
 
-    // Work out which sessionType to move, set currentTime and set currentRound accordingly
+    // Work out which sessionType to move; set currentTime and set roundNumber; notify user
     if (sessionType === "Focus") {
       if (roundNumber === rounds) {
+        notify({
+          currentSession: sessionType,
+          nextDuration: longBreak,
+          nextBreak: "long",
+        });
         setSessionType("Long Break");
         setCurrentTime(longBreakSeconds);
         setTotalTime(longBreakSeconds);
       } else {
+        notify({
+          currentSession: sessionType,
+          nextDuration: shortBreak,
+          nextBreak: "short",
+        });
         setSessionType("Short Break");
         setCurrentTime(shortBreakSeconds);
         setTotalTime(shortBreakSeconds);
       }
     } else {
+      notify({ currentSession: sessionType, nextDuration: focus });
       setSessionType("Focus");
       setCurrentTime(focusSeconds);
       setTotalTime(focusSeconds);
@@ -90,8 +100,12 @@ export const useTimer = (): UseTimerReturn => {
     isRunning,
     roundNumber,
     sessionType,
+    focus,
+    shortBreak,
+    longBreak,
     toggleRunning,
     clearTimer,
+    notify,
   ]);
 
   const restartSession = useCallback((): void => {

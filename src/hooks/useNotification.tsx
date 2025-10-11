@@ -1,6 +1,6 @@
-export const useNotification = (): {
-  requestPermission: () => Promise<void>;
-} => {
+import type { UseNotificationReturn, NotifyProps } from "@/types";
+
+export const useNotification = (): UseNotificationReturn => {
   const requestPermission = async (): Promise<void> => {
     // Check browser support
     if (!("Notification" in window)) {
@@ -24,7 +24,30 @@ export const useNotification = (): {
     }
   };
 
+  const notify = ({ currentSession, nextDuration, nextBreak }: NotifyProps) => {
+    let title: string;
+    let body: string;
+
+    if (currentSession === "Focus") {
+      title = "Focus session complete";
+      body = `Start a ${nextDuration} minute ${nextBreak} break`;
+    } else {
+      title = `${
+        currentSession === "Long Break"
+          ? currentSession.slice(0, 4)
+          : currentSession.slice(0, 5)
+      } break complete`;
+      body = `Start a ${nextDuration} minute focus round`;
+    }
+
+    new Notification(title, {
+      body: body,
+      tag: "timer",
+    });
+  };
+
   return {
-    requestPermission, // Called on play button click
+    requestPermission,
+    notify,
   };
 };
