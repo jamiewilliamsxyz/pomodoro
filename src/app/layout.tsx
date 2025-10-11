@@ -14,7 +14,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Pomodoro",
-  description: "A simple Pomodoro timer app built with Next.js and TypeScript.",
+  description: "A simple Pomodoro timer app built with Next.js and TypeScript",
 };
 
 const theme: Theme = "system";
