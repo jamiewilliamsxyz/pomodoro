@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import type { TimerRef, SessionType, UseTimerReturn } from "@/types";
-import { useToggle } from "@/hooks";
+import { useToggle, useNotification } from "@/hooks";
 import { useSettings } from "@/context/settingsContext";
 
 export const useTimer = (): UseTimerReturn => {
   const { settings } = useSettings();
+  const { requestPermission } = useNotification();
 
   const { focus, shortBreak, longBreak, rounds } = settings.timer;
 
@@ -23,9 +24,15 @@ export const useTimer = (): UseTimerReturn => {
   const timerRef = useRef<TimerRef>(null);
 
   // Wrapping functions in useCallback to prevent recreating them on every re-render
+  // startStop is used only on StartStopButton click
   const startStop = useCallback((): void => {
     toggleRunning();
-  }, [toggleRunning]);
+
+    // Request permission if timer has started
+    if (!isRunning) {
+      requestPermission();
+    }
+  }, [toggleRunning, requestPermission, isRunning]);
 
   const clearTimer = useCallback(() => {
     if (timerRef.current) {
