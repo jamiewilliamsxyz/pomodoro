@@ -44,10 +44,10 @@ export type SettingsContextType = {
 export type Theme = "light" | "dark" | "system";
 
 export interface TimerSettings {
-  focus: number;
-  shortBreak: number;
-  longBreak: number;
-  rounds: number;
+  focusLength: number;
+  shortBreakLength: number;
+  longBreakLength: number;
+  roundsUntilLongBreak: number;
 }
 
 export interface BehaviourSettings {

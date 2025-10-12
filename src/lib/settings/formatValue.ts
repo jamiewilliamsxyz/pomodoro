@@ -4,7 +4,7 @@ export const formatValue = ({
   value,
   id,
 }: Pick<OptionProps, "value" | "id">) => {
-  if (id === "rounds") {
+  if (id === "roundsUntilLongBreak") {
     return value;
   } else if (id === "notificationVolume") {
     return `${value}%`;

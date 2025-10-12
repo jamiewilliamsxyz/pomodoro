@@ -7,11 +7,16 @@ export const useTimer = (): UseTimerReturn => {
   const { settings } = useSettings();
   const { requestPermission, notify } = useNotification();
 
-  const { focus, shortBreak, longBreak, rounds } = settings.timer;
+  const {
+    focusLength,
+    shortBreakLength,
+    longBreakLength,
+    roundsUntilLongBreak,
+  } = settings.timer;
 
-  const focusSeconds = focus * 60;
-  const shortBreakSeconds = shortBreak * 60;
-  const longBreakSeconds = longBreak * 60;
+  const focusSeconds = focusLength * 60;
+  const shortBreakSeconds = shortBreakLength * 60;
+  const longBreakSeconds = longBreakLength * 60;
 
   // Setting timer state
   const [isRunning, toggleRunning] = useToggle(false);
@@ -62,10 +67,10 @@ export const useTimer = (): UseTimerReturn => {
 
     // Work out which sessionType to move; set currentTime and set roundNumber; notify user
     if (sessionType === "Focus") {
-      if (roundNumber === rounds) {
+      if (roundNumber === roundsUntilLongBreak) {
         notify({
           currentSession: sessionType,
-          nextDuration: longBreak,
+          nextDuration: longBreakLength,
           nextBreak: "long",
         });
         setSessionType("Long Break");
@@ -74,7 +79,7 @@ export const useTimer = (): UseTimerReturn => {
       } else {
         notify({
           currentSession: sessionType,
-          nextDuration: shortBreak,
+          nextDuration: shortBreakLength,
           nextBreak: "short",
         });
         setSessionType("Short Break");
@@ -82,7 +87,7 @@ export const useTimer = (): UseTimerReturn => {
         setTotalTime(shortBreakSeconds);
       }
     } else {
-      notify({ currentSession: sessionType, nextDuration: focus });
+      notify({ currentSession: sessionType, nextDuration: focusLength });
       setSessionType("Focus");
       setCurrentTime(focusSeconds);
       setTotalTime(focusSeconds);
@@ -96,13 +101,13 @@ export const useTimer = (): UseTimerReturn => {
     focusSeconds,
     shortBreakSeconds,
     longBreakSeconds,
-    rounds,
+    roundsUntilLongBreak,
     isRunning,
     roundNumber,
     sessionType,
-    focus,
-    shortBreak,
-    longBreak,
+    focusLength,
+    shortBreakLength,
+    longBreakLength,
     toggleRunning,
     clearTimer,
     notify,
@@ -173,17 +178,17 @@ export const useTimer = (): UseTimerReturn => {
   useEffect(() => {
     if (sessionType === "Focus") restartSession();
     // eslint-disable-next-line
-  }, [focus]);
+  }, [focusLength]);
 
   useEffect(() => {
     if (sessionType === "Short Break") restartSession();
     // eslint-disable-next-line
-  }, [shortBreak]);
+  }, [shortBreakLength]);
 
   useEffect(() => {
     if (sessionType === "Long Break") restartSession();
     // eslint-disable-next-line
-  }, [longBreak]);
+  }, [longBreakLength]);
 
   // Returning functions/state to use in Timer components
   return {

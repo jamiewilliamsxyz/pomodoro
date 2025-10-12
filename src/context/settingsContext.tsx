@@ -9,7 +9,12 @@ import type {
 import { settingsReducer } from "@/lib/settings/reducer";
 
 export const defaultSettings: SettingsState = {
-  timer: { focus: 25, shortBreak: 5, longBreak: 15, rounds: 4 },
+  timer: {
+    focusLength: 25,
+    shortBreakLength: 5,
+    longBreakLength: 15,
+    roundsUntilLongBreak: 4,
+  },
   behaviour: { autoStart: false, displayQuotes: true },
   notifications: {
     popupNotifications: true,

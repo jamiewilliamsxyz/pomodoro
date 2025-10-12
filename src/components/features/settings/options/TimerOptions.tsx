@@ -8,33 +8,33 @@ const TimerOptions = () => {
     <>
       <Option
         title="Focus"
-        id="focus"
+        id="focusLength"
         type="slider"
-        value={settings.timer.focus}
+        value={settings.timer.focusLength}
         min={1}
         max={90}
       />
       <Option
         title="Short Break"
-        id="shortBreak"
+        id="shortBreakLength"
         type="slider"
-        value={settings.timer.shortBreak}
+        value={settings.timer.shortBreakLength}
         min={1}
         max={90}
       />
       <Option
         title="Long Break"
-        id="longBreak"
+        id="longBreakLength"
         type="slider"
-        value={settings.timer.longBreak}
+        value={settings.timer.longBreakLength}
         min={1}
         max={90}
       />
       <Option
         title="Rounds"
-        id="rounds"
+        id="roundsUntilLongBreak"
         type="slider"
-        value={settings.timer.rounds}
+        value={settings.timer.roundsUntilLongBreak}
         min={1}
         max={12}
       />

@@ -22,7 +22,7 @@ const TimerContent = ({
         {minutes}:{seconds.toString().padStart(2, "0")}
       </h3>
       <h4 className="text-lg text-neutral-700">
-        {roundNumber}/{settings.timer.rounds}
+        {roundNumber}/{settings.timer.roundsUntilLongBreak}
       </h4>
     </div>
   );
