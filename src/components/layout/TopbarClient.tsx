@@ -1,6 +1,6 @@
 "use client";
 
-import { useToggle } from "@/hooks";
+import { useToggle } from "@/hooks/useToggle";
 import Topbar from "./Topbar";
 import SettingsModal from "../features/settings/SettingsModal";
 
