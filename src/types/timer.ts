@@ -19,9 +19,3 @@ export interface TimerActions {
 export type UseTimerReturn = TimerState & TimerActions;
 
 export type TimerRef = number | null;
-
-// Format Time Function Type
-export interface FormatTimeReturn {
-  minutes: number;
-  seconds: number;
-}

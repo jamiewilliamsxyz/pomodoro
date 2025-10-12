@@ -1,4 +1,4 @@
-import { formatTime } from "@/lib/formatTime";
+import { formatTime } from "@/utils/formatTime";
 import type { TimerState } from "@/types";
 import { useSettings } from "@/context/settingsContext";
 

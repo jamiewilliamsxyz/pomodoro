@@ -1,5 +1,5 @@
 import type { TimerState } from "@/types";
-import { PROGRESS_CIRCLE_DIMENSIONS } from "@/lib/constants";
+import { PROGRESS_CIRCLE_DIMENSIONS } from "@/constants/progresCircle";
 import TimerContent from "./TimerContent";
 import ProgressCircle from "./ProgressCircle";
 
