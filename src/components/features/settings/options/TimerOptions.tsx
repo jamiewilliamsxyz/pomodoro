@@ -8,7 +8,7 @@ const TimerOptions = () => {
     <>
       <Option
         title="Focus"
-        label="focus"
+        id="focus"
         type="slider"
         value={settings.timer.focus}
         min={1}
@@ -16,7 +16,7 @@ const TimerOptions = () => {
       />
       <Option
         title="Short Break"
-        label="shortBreak"
+        id="shortBreak"
         type="slider"
         value={settings.timer.shortBreak}
         min={1}
@@ -24,7 +24,7 @@ const TimerOptions = () => {
       />
       <Option
         title="Long Break"
-        label="longBreak"
+        id="longBreak"
         type="slider"
         value={settings.timer.longBreak}
         min={1}
@@ -32,7 +32,7 @@ const TimerOptions = () => {
       />
       <Option
         title="Rounds"
-        label="rounds"
+        id="rounds"
         type="slider"
         value={settings.timer.rounds}
         min={1}
@@ -40,7 +40,7 @@ const TimerOptions = () => {
       />
       <Option
         title="Reset to Defaults"
-        label="resetToDefaults"
+        id="resetToDefaults"
         type="textButton"
       />
     </>

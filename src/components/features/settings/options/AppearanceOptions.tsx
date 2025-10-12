@@ -4,7 +4,7 @@ const AppearanceOptions = () => {
   return (
     <>
       {/*
-        <Option label="theme" type="segmentedControl" />
+        <Option id="theme" type="segmentedControl" />
       */}
     </>
   );

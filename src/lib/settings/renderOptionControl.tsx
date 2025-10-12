@@ -5,25 +5,23 @@ import SegmentedControl from "@/components/ui/SegmentedControl";
 
 export const renderOptionControl = ({
   type,
-  label,
+  id,
   value,
   min,
   max,
-  onChange,
 }: OptionProps) => {
   switch (type) {
     case "slider":
       return (
         <Slider
-          id={label}
+          id={id}
           value={value as number}
           min={min as number}
           max={max as number}
-          onChange={onChange!}
         />
       ); // Telling TS that onChange won't be null/undefined by using "!"
     case "toggle":
-      return <Toggle />;
+      return <Toggle id={id} value={value as boolean} />;
     case "segmentedControl":
       return <SegmentedControl />;
     default:

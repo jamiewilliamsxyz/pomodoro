@@ -13,12 +13,11 @@ export type SettingsOptionType =
 
 export interface OptionProps {
   title: string;
-  label: string;
+  id: string;
   type: SettingsOptionType;
   value?: number | boolean | string;
   min?: number;
   max?: number;
-  onChange?: (value: number | boolean | string) => void;
 }
 
 // SettingsContext/Reducer Types
@@ -57,9 +56,9 @@ export interface BehaviourSettings {
 }
 
 export interface NotificationSettings {
-  enable: boolean;
-  sound: boolean;
-  volume: number;
+  popupNotifications: boolean;
+  notificationSound: boolean;
+  notificationVolume: number;
 }
 
 export interface AppearanceSettings {

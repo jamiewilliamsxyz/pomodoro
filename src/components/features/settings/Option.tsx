@@ -2,10 +2,9 @@ import type { OptionProps } from "@/types";
 import { useSettings } from "@/context/settingsContext";
 import { renderOptionControl } from "@/lib/settings/renderOptionControl";
 import { formatValue } from "@/lib/settings/formatValue";
-import { dispatchSettingChange } from "@/lib/settings/dispatchSettingChange";
 
-const Option = ({ title, label, type, value, min, max }: OptionProps) => {
-  const { dispatch, activeSection } = useSettings();
+const Option = ({ title, id, type, value, min, max }: OptionProps) => {
+  const { dispatch } = useSettings();
 
   return type === "textButton" ? (
     <button
@@ -15,31 +14,22 @@ const Option = ({ title, label, type, value, min, max }: OptionProps) => {
       Reset to Defaults
     </button>
   ) : (
-    <div className="flex flex-col gap-3">
-      <div className="flex justify-between text-neutral-700">
-        <label htmlFor={label} className="text-[1.05rem]">
-          {title}
-        </label>
-        <div className="bg-[#ececec] rounded-sm px-1.5 flex items-center">
+    <div className="flex flex-col gap-1">
+      <div className="flex justify-between items-center text-neutral-700">
+        <p className="text-[1.05rem]">{title}</p>
+        <div className="bg-[#ececec] rounded-sm px-1.5 pt-1.5 pb-1 flex items-center mb-[-2px]">
           <p className="text-[0.95rem] leading-[0.95rem] font-mono">
-            {formatValue({ value, label })}
+            {formatValue({ value, id })}
           </p>
         </div>
       </div>
       {renderOptionControl({
         title,
         type,
-        label,
+        id,
         value,
         min,
         max,
-        onChange: (value) =>
-          dispatchSettingChange({
-            activeSection,
-            label,
-            value,
-            dispatch,
-          }),
       })}
     </div>
   );

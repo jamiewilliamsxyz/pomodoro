@@ -8,21 +8,21 @@ const NotificationOptions = () => {
     <>
       <Option
         title="Popup Notifications"
-        label="popupNotifications"
+        id="popupNotifications"
         type="toggle"
-        value={settings.notifications.enable}
+        value={settings.notifications.popupNotifications}
       />
       <Option
         title="Notification Sound"
-        label="notificationSound"
+        id="notificationSound"
         type="toggle"
-        value={settings.notifications.sound}
+        value={settings.notifications.notificationSound}
       />
       <Option
         title="Volume"
-        label="notificationVolume"
+        id="notificationVolume"
         type="slider"
-        value={settings.notifications.volume}
+        value={settings.notifications.notificationVolume}
         min={1}
         max={100}
       />

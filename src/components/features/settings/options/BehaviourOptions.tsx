@@ -4,8 +4,8 @@ const BehaviourOptions = () => {
   return (
     <>
       {/*
-        <Option label="autoStart" type="toggle" />
-        <Option label="displayQuotes" type="toggle" />
+        <Option id="autoStart" type="toggle" />
+        <Option id="displayQuotes" type="toggle" />
       */}
     </>
   );
