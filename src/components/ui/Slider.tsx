@@ -1,5 +1,4 @@
 import "@/styles/slider.css";
-import { calculatePercentage } from "@/lib/calculatePercentage";
 import { dispatchSettingChange } from "@/lib/settings/dispatchSettingChange";
 import { useSettings } from "@/context/settingsContext";
 
@@ -25,7 +24,12 @@ const Slider = ({
     });
   };
 
-  const percentage = calculatePercentage(value, min, max);
+  const calculatePercentage = () => {
+    if (max <= min) return 0;
+    return ((value - min) / (max - min)) * 100;
+  };
+
+  const percentage = calculatePercentage();
 
   return (
     <label htmlFor={id}>
