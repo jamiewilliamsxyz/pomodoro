@@ -7,13 +7,13 @@ const NotificationOptions = () => {
   return (
     <>
       <Option
-        title="Popup Notifications"
+        title="Enable Popup"
         id="popupNotifications"
         type="toggle"
         value={settings.notifications.popupNotifications}
       />
       <Option
-        title="Volume"
+        title="Notification Volume"
         id="notificationVolume"
         type="slider"
         value={settings.notifications.notificationVolume}
