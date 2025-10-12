@@ -1,4 +1,4 @@
-import { renderSectionOptions } from "@/lib/settings/renderSectionOptions";
+import { renderSectionOptions } from "@/components/features/settings/renderSectionOptions";
 import { useSettings } from "@/context/settingsContext";
 
 const Content = () => {

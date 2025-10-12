@@ -1,6 +1,6 @@
 import type { OptionProps } from "@/types";
 import { useSettings } from "@/context/settingsContext";
-import { renderOptionControl } from "@/lib/settings/renderOptionControl";
+import { renderOptionControl } from "@/components/features/settings/renderOptionControl";
 import { formatValue } from "@/lib/settings/formatValue";
 
 const Option = ({ title, id, type, value, min, max }: OptionProps) => {
