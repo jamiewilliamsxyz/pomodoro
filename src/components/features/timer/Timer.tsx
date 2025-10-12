@@ -18,7 +18,7 @@ const Timer = () => {
   } = useTimer();
 
   return (
-    <div className="flex flex-col items-center gap-7">
+    <div className="flex flex-col items-center gap-6">
       <TimerDisplay
         sessionType={sessionType}
         currentTime={currentTime}
