@@ -13,7 +13,6 @@ export const defaultSettings: SettingsState = {
   behaviour: { autoStart: false, displayQuotes: true },
   notifications: {
     popupNotifications: true,
-    notificationSound: true,
     notificationVolume: 50,
   },
   appearance: { theme: "system" },

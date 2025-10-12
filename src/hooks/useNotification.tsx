@@ -1,6 +1,11 @@
 import type { UseNotificationReturn, NotifyProps } from "@/types";
+import { useSettings } from "@/context/settingsContext";
 
 export const useNotification = (): UseNotificationReturn => {
+  const { settings } = useSettings();
+
+  const { popupNotifications, notificationVolume } = settings.notifications;
+
   const requestPermission = async (): Promise<void> => {
     // Check browser support
     if (!("Notification" in window)) {
@@ -26,11 +31,14 @@ export const useNotification = (): UseNotificationReturn => {
 
   const playSound = () => {
     const sound = new Audio("/sounds/notification.mp3");
-    sound.volume = 0.5;
+    sound.volume = notificationVolume / 100;
     sound.play();
   };
 
   const notify = ({ currentSession, nextDuration, nextBreak }: NotifyProps) => {
+    if (notificationVolume === 0) playSound();
+    if (!popupNotifications) return;
+
     let title: string;
     let body: string;
 
@@ -52,8 +60,6 @@ export const useNotification = (): UseNotificationReturn => {
       icon: "/icons/icon.png",
       badge: "/icons/badge.png",
     });
-
-    playSound();
   };
 
   return {

@@ -57,7 +57,6 @@ export interface BehaviourSettings {
 
 export interface NotificationSettings {
   popupNotifications: boolean;
-  notificationSound: boolean;
   notificationVolume: number;
 }
 

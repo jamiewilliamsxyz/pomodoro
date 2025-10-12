@@ -8,7 +8,7 @@ export const formatValue = ({
     return value;
   } else if (id === "notificationVolume") {
     return `${value}%`;
-  } else if (id === "popupNotifications" || id === "notificationSound") {
+  } else if (id === "popupNotifications") {
     if (value) {
       return "On";
     } else {
