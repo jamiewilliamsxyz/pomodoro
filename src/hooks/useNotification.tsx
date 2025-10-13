@@ -36,7 +36,7 @@ export const useNotification = (): UseNotificationReturn => {
   };
 
   const notify = ({ currentSession, nextDuration, nextBreak }: NotifyProps) => {
-    if (notificationVolume === 0) playSound();
+    if (notificationVolume != 0) playSound();
     if (!popupNotifications) return;
 
     let title: string;
