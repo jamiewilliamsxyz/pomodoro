@@ -3,7 +3,7 @@ import QuoteDisplay from "@/components/features/quotes/QuoteDisplay";
 
 const Home = () => {
   return (
-    <div className="flex items-center justify-center flex-col gap-8 h-screen mt-[-68px]">
+    <div className="flex items-center justify-center flex-col gap-8 h-screen">
       <Timer />
       <QuoteDisplay />
     </div>

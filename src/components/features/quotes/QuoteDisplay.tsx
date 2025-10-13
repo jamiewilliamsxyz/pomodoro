@@ -9,7 +9,7 @@ const QuoteDisplay = () => {
   return (
     <div
       onClick={() => !loading && fetchQuote()}
-      className="max-w-10/12 h-32 text-center cursor-pointer flex items-start justify-center gap-2 transition-opacity duration-200"
+      className="max-w-10/12 h-28 text-center cursor-pointer flex items-center justify-center gap-2 transition-opacity duration-200"
       title={"Click to refresh quote"}
     >
       {loading && <Spinner className="mt-7" />}
