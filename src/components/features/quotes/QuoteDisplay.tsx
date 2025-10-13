@@ -12,7 +12,7 @@ const QuoteDisplay = () => {
       title={"Click to refresh quote"}
     >
       {loading && (
-        <div className="w-6 h-6 border-2 border-t-2 border-neutral-500 opacity-50 border-t-transparent rounded-full animate-spin" />
+        <div className="w-6 h-6 mt-7 border-2 border-t-2 border-neutral-500 opacity-50 border-t-transparent rounded-full animate-spin" />
       )}
       {!loading && quote && (
         <q className="text-neutral-700 text-xl hover:opacity-80 transition-opacity duration-200">
