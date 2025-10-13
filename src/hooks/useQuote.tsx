@@ -3,6 +3,7 @@ import type {
   UseQuoteReturn,
   QuoteState,
   LoadingState,
+  ErrorState,
   FetchQuoteReturn,
   QuoteApiResponse,
 } from "@/types";
@@ -10,10 +11,12 @@ import type {
 export const useQuote = (): UseQuoteReturn => {
   const [quote, setQuote] = useState<QuoteState>("");
   const [loading, setLoading] = useState<LoadingState>(false);
+  const [error, setError] = useState<ErrorState>(null);
 
   // Fetch quote function
   const fetchQuote = useCallback(async (): FetchQuoteReturn => {
     setLoading(true);
+    setError(null);
 
     const tags = ["motivation", "inspiration"];
     const selectedTag = tags[Math.floor(Math.random() * tags.length)];
@@ -25,13 +28,9 @@ export const useQuote = (): UseQuoteReturn => {
 
       if (!res.ok) {
         if (res.status === 429) {
-          console.error(`Quote API rate limit exceeded ${res.status}`);
-          setQuote("Slow down, try again later");
+          setError("Slow down, try again later");
         } else {
-          console.error(`Quote API responded with status ${res.status}`);
-          setQuote(
-            "Unable to load a quote at this time, please try again later"
-          );
+          setError("Unable to load a quote at this time");
         }
         return;
       }
@@ -41,11 +40,10 @@ export const useQuote = (): UseQuoteReturn => {
       setQuote(data.quote);
     } catch (err: unknown) {
       if (err instanceof Error) {
-        console.error("Error fetching quote:", err.message);
+        setError(err.message);
       } else {
-        console.error("Unknown error occurred while fetching quote");
+        setError("An unexpected error occurred");
       }
-      setQuote("An unexpected error occurred");
     } finally {
       setLoading(false);
     }
@@ -59,6 +57,7 @@ export const useQuote = (): UseQuoteReturn => {
   return {
     quote,
     loading,
+    error,
     fetchQuote,
   };
 };
