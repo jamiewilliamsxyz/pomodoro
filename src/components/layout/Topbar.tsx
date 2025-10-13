@@ -1,7 +1,8 @@
 import { EyeClosed, PictureInPicture2, Settings } from "lucide-react";
 import IconButton from "../ui/IconButton";
+import OpenModalButton from "../ui/OpenModalButton";
 
-const Topbar = ({ toggleSettings }: { toggleSettings: () => void }) => {
+const Topbar = () => {
   return (
     <nav className="p-5">
       <div className="max-w-[95rem] mx-auto flex justify-between items-center">
@@ -15,8 +16,8 @@ const Topbar = ({ toggleSettings }: { toggleSettings: () => void }) => {
             icon={<EyeClosed width={28} height={28} strokeWidth={1.25} />}
           />
         </div>
-        <IconButton
-          onClick={toggleSettings}
+        <OpenModalButton
+          modal="settings"
           icon={<Settings width={28} height={28} strokeWidth={1.25} />}
         />
       </div>

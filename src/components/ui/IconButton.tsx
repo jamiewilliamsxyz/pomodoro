@@ -1,10 +1,8 @@
-import { JSX } from "react";
-
 const IconButton = ({
   icon,
   onClick,
 }: {
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (

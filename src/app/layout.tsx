@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Theme } from "@/types";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SettingsProvider } from "@/context/settingsContext";
-import TopbarClient from "@/components/layout/TopbarClient";
+import Providers from "./providers";
+import Topbar from "@/components/layout/Topbar";
 import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
@@ -34,11 +34,13 @@ const RootLayout = ({
       <body
         className={`${inter.className} antialiased bg-neutral-50 h-screen flex flex-col`}
       >
-        <SettingsProvider>
-          <TopbarClient />
-          {children}
-        </SettingsProvider>
-        <Footer />
+        <Providers>
+          <Topbar />
+          <main className="flex items-center justify-center flex-col gap-8 h-screen">
+            {children}
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

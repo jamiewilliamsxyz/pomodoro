@@ -1,21 +1,19 @@
-import Popup from "@/components/ui/Popup";
 import Topbar from "./Topbar";
 import Content from "./Content";
 
-const SettingsModal = ({
-  isSettingsOpen,
-  toggleSettings,
-}: {
-  isSettingsOpen: boolean;
-  toggleSettings: () => void;
-}) => {
+const SettingsModal = () => {
   return (
-    <Popup isSettingsOpen={isSettingsOpen} toggleSettings={toggleSettings}>
+    <div
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+      className="relative top-[8vh] bg-neutral-50 min-w-10/12 sm:min-w-sm min-h-fit h-fit max-h-9/12 overflow-y-auto rounded-xl shadow-sm"
+    >
       <div className="flex flex-col gap-3">
-        <Topbar toggleSettings={toggleSettings} />
+        <Topbar />
         <Content />
       </div>
-    </Popup>
+    </div>
   );
 };
 

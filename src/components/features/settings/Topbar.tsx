@@ -1,7 +1,8 @@
 import { JSX } from "react";
-import { X, Clock, SlidersHorizontal, Bell, Palette } from "lucide-react";
+import { Clock, SlidersHorizontal, Bell, Palette } from "lucide-react";
 import type { ActiveSectionState } from "@/types";
 import NavItem from "./NavItem";
+import CloseModalButton from "@/components/ui/CloseModalButton";
 
 const sections: { id: ActiveSectionState; icon: JSX.Element }[] = [
   { id: "timer", icon: <Clock width={24} height={24} strokeWidth={1.25} /> },
@@ -19,16 +20,11 @@ const sections: { id: ActiveSectionState; icon: JSX.Element }[] = [
   },
 ];
 
-const Topbar = ({ toggleSettings }: { toggleSettings: () => void }) => {
+const Topbar = () => {
   return (
     <nav className="flex">
-      <div className="flex py-4 px-4 sm:px-6">
-        <button
-          onClick={toggleSettings}
-          className="text-red-400 hover:text-red-300 transition-colors duration-200 cursor-pointer"
-        >
-          <X width={28} height={28} strokeWidth={1.5} />
-        </button>
+      <div className="flex p-4 sm:px-6">
+        <CloseModalButton />
       </div>
 
       <ul className="flex justify-evenly items-center bg-[#ececec] rounded-bl-xl pt-3 pb-[7px] w-full">
