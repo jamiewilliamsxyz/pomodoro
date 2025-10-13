@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Theme } from "@/types";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -15,6 +15,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Pomodoro",
   description: "A simple Pomodoro timer app built with Next.js and TypeScript",
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: "device-width",
 };
 
 const theme: Theme = "system";
