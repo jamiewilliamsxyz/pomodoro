@@ -7,7 +7,7 @@ const InfoModal = () => {
       onClick={(e) => {
         e.stopPropagation();
       }}
-      className="px-3 py-2 sm:px-5 sm:py-3 flex flex-col gap-4.5 relative top-[8vh] bg-neutral-50 max-w-sm h-fit rounded-xl shadow-sm"
+      className="p-3 sm:px-5 sm:py-4 flex flex-col gap-4.5 relative top-[8vh] bg-neutral-50 max-w-sm h-fit rounded-xl shadow-sm"
     >
       <CloseModalButton />
       <div className="ml-1 flex flex-col gap-3.5">
