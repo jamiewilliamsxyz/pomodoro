@@ -1,5 +1,5 @@
 import Timer from "@/components/features/timer/Timer";
-import QuoteDisplay from "@/components/features/quotes/QuoteDisplay";
+import QuoteDisplay from "@/components/features/QuoteDisplay";
 
 const Home = () => {
   return (
