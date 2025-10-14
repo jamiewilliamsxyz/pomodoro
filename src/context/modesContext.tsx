@@ -9,7 +9,7 @@ export const ModesContext = createContext<ModesContextType | undefined>(
 );
 
 export const ModesProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isPiPSupported, setIsPiPSupported] = useState(false);
+  const [isPiPSupported, setIsPiPSupported] = useState(true);
   const [isPiPMode, toggleIsPiPMode] = useToggle(false);
   const [isFocusMode, toggleIsFocusMode] = useToggle(false);
 
