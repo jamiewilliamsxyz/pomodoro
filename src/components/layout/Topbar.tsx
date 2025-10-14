@@ -1,21 +1,25 @@
 "use client";
 
-import { EyeClosed, PictureInPicture2, Settings } from "lucide-react";
+import { EyeClosed, Eye, PictureInPicture2, Settings } from "lucide-react";
 import { useModes } from "@/context/modesContext";
 import IconButton from "../ui/IconButton";
 import OpenModalButton from "../ui/OpenModalButton";
 
 const Topbar = () => {
-  const { isPiPSupported, toggleIsPiPMode, toggleIsFocusMode } = useModes();
+  const { isPiPSupported, isFocusMode, toggleIsPiPMode, toggleIsFocusMode } =
+    useModes();
+
+  const focusModeIcon = isFocusMode ? (
+    <Eye width={28} height={28} strokeWidth={1.25} />
+  ) : (
+    <EyeClosed width={28} height={28} strokeWidth={1.25} />
+  );
 
   return (
     <nav className="p-5">
       <div className="max-w-[95rem] mx-auto flex justify-between items-center ">
         <div className="flex gap-5">
-          <IconButton
-            onClick={toggleIsFocusMode}
-            icon={<EyeClosed width={28} height={28} strokeWidth={1.25} />}
-          />
+          <IconButton onClick={toggleIsFocusMode} icon={focusModeIcon} />
           {isPiPSupported && (
             <IconButton
               onClick={toggleIsPiPMode}
@@ -25,6 +29,7 @@ const Topbar = () => {
             />
           )}
         </div>
+
         <OpenModalButton
           modal="settings"
           icon={<Settings width={28} height={28} strokeWidth={1.25} />}
