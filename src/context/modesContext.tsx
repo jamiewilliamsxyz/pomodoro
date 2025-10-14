@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, use } from "react";
+import { useState, useEffect, createContext, use } from "react";
 import type { ModesContextType } from "@/types";
 import { useToggle } from "@/hooks/useToggle";
 
@@ -9,12 +9,27 @@ export const ModesContext = createContext<ModesContextType | undefined>(
 );
 
 export const ModesProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isPiPSupported, setIsPiPSupported] = useState(false);
   const [isPiPMode, toggleIsPiPMode] = useToggle(false);
   const [isFocusMode, toggleIsFocusMode] = useToggle(false);
 
+  // Detect is PiP is supported on mount
+  // Made sure this runs only on the client (window is defined)
+  useEffect(() => {
+    setIsPiPSupported(
+      typeof window !== "undefined" && "documentPictureInPicture" in window
+    );
+  }, []);
+
   return (
     <ModesContext
-      value={{ isPiPMode, isFocusMode, toggleIsPiPMode, toggleIsFocusMode }}
+      value={{
+        isPiPSupported,
+        isPiPMode,
+        isFocusMode,
+        toggleIsPiPMode,
+        toggleIsFocusMode,
+      }}
     >
       {children}
     </ModesContext>
