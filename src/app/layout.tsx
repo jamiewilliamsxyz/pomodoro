@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import Topbar from "@/components/layout/Topbar";
-import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,7 +38,6 @@ const RootLayout = ({
           <main className="flex items-center justify-center flex-col gap-8 h-screen">
             {children}
           </main>
-          <Footer />
         </Providers>
       </body>
     </html>
