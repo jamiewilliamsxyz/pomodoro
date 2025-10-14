@@ -1,6 +1,6 @@
 "use client";
 
-import { EyeClosed, Eye, PictureInPicture2, Settings } from "lucide-react";
+import { EyeClosed, PictureInPicture2, Settings } from "lucide-react";
 import { useModes } from "@/context/modesContext";
 import IconButton from "../ui/IconButton";
 import OpenModalButton from "../ui/OpenModalButton";
