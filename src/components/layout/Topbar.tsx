@@ -1,6 +1,7 @@
 import { Settings, Info } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import logo from "../../../public/icons/logo.svg";
 import OpenModalButton from "../ui/OpenModalButton";
 
 const Topbar = () => {
@@ -8,13 +9,7 @@ const Topbar = () => {
     <nav className="mt-6 w-[34rem] px-5 py-3 mx-auto flex justify-between rounded-full shadow-sm">
       <div className="flex gap-3 items-center">
         <Link href="/">
-          <Image
-            src="/icons/logo.png"
-            height={32}
-            width={32}
-            alt="Pomodoro logo"
-            className="w-7 h-7"
-          />
+          <Image src={logo.src} width={26} height={26} alt="Pomodoro logo" />
         </Link>
 
         <h1 className="text-lg font-medium text-neutral-800 tracking-normal">
