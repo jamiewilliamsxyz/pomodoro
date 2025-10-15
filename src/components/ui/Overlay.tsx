@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useModal } from "@/context/modalContext";
 import SettingsModal from "@/components/features/settings/SettingsModal";
 import InfoModal from "@/components/features/InfoModal";
@@ -17,6 +18,18 @@ const Overlay = () => {
         return null;
     }
   };
+
+  useEffect(() => {
+    if (activeModal === null) return;
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [activeModal, closeModal]);
 
   return (
     <div
