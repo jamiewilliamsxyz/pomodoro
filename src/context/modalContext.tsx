@@ -14,7 +14,10 @@ export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
     setActiveModal(modal);
   };
 
-  const closeModal = () => setActiveModal(null);
+  const closeModal = () => {
+    (document.activeElement as HTMLElement)?.blur();
+    setActiveModal(null);
+  };
 
   return (
     <ModalContext value={{ activeModal, openModal, closeModal }}>
