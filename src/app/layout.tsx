@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Theme } from "@/types";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import Topbar from "@/components/layout/Topbar";
@@ -9,6 +9,13 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500"],
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500"],
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +38,7 @@ const RootLayout = ({
   return (
     <html lang="en" data-theme={theme}>
       <body
-        className={`${inter.className} antialiased bg-neutral-50 h-screen flex flex-col`}
+        className={`${inter.className} ${roboto.variable} antialiased bg-neutral-50 h-screen flex flex-col`}
       >
         <Providers>
           <Topbar />

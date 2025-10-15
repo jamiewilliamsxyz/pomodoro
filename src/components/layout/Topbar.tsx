@@ -17,7 +17,9 @@ const Topbar = () => {
           />
         </Link>
 
-        <h1 className="text-lg">Pomodoro</h1>
+        <h1 className="text-lg font-medium text-neutral-800 tracking-normal">
+          Pomodoro
+        </h1>
       </div>
 
       <div className="flex gap-5 items-center">
