@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import type { TimerRef, SessionType, UseTimerReturn } from "@/types";
-import { useToggle } from "./useToggle";
 import { useNotification } from "./useNotification";
 import { useSettings } from "@/context/settingsContext";
 
@@ -15,12 +14,14 @@ export const useTimer = (): UseTimerReturn => {
     roundsUntilLongBreak,
   } = settings.timer;
 
+  const { autoStart } = settings.behaviour;
+
   const focusSeconds = focusLength * 60;
   const shortBreakSeconds = shortBreakLength * 60;
   const longBreakSeconds = longBreakLength * 60;
 
   // Setting timer state
-  const [isRunning, toggleRunning] = useToggle(false);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(focusSeconds);
   const [totalTime, setTotalTime] = useState<number>(focusSeconds);
   const [sessionType, setSessionType] = useState<SessionType>("Focus");
@@ -32,13 +33,13 @@ export const useTimer = (): UseTimerReturn => {
   // Wrapping functions in useCallback to prevent recreating them on every re-render
   // startStop is used only on StartStopButton click
   const startStop = useCallback((): void => {
-    toggleRunning();
+    setIsRunning((prev) => !prev);
 
     // Request permission if timer has started
     if (!isRunning) {
       requestPermission();
     }
-  }, [toggleRunning, requestPermission, isRunning]);
+  }, [requestPermission, isRunning]);
 
   const clearTimer = useCallback(() => {
     if (timerRef.current) {
@@ -62,8 +63,8 @@ export const useTimer = (): UseTimerReturn => {
   }, [focusSeconds, shortBreakSeconds, longBreakSeconds, sessionType]);
 
   const handleSessionEnd = useCallback((): void => {
-    // Stop & clear timer
-    if (isRunning) toggleRunning();
+    // Stop timer if autoStart is false then clear timer
+    setIsRunning(autoStart);
     clearTimer();
 
     // Work out which sessionType to move; set currentTime and set roundNumber; notify user
@@ -103,19 +104,18 @@ export const useTimer = (): UseTimerReturn => {
     shortBreakSeconds,
     longBreakSeconds,
     roundsUntilLongBreak,
-    isRunning,
     roundNumber,
     sessionType,
     focusLength,
     shortBreakLength,
     longBreakLength,
-    toggleRunning,
+    autoStart,
     clearTimer,
     notify,
   ]);
 
   const restartSession = useCallback((): void => {
-    if (isRunning) toggleRunning();
+    setIsRunning(autoStart);
 
     clearTimer();
 
@@ -137,9 +137,8 @@ export const useTimer = (): UseTimerReturn => {
     focusSeconds,
     shortBreakSeconds,
     longBreakSeconds,
-    isRunning,
     sessionType,
-    toggleRunning,
+    autoStart,
     clearTimer,
   ]);
 
