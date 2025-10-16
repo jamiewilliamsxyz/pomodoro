@@ -1,10 +1,15 @@
 "use client";
 
 import { useQuote } from "@/hooks/useQuote";
+import { useSettings } from "@/context/settingsContext";
 import Spinner from "@/components/ui/Spinner";
 
 const QuoteDisplay = () => {
   const { quote, loading, error, fetchQuote } = useQuote();
+  const { settings } = useSettings();
+
+  // Hide quotes if quote display set to false by the user in settings
+  if (!settings.behaviour.displayQuotes) return null;
 
   return (
     <div
