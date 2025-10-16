@@ -1,11 +1,16 @@
-// import Option from "../Option";
+import { useSettings } from "@/context/settingsContext";
+import Option from "../Option";
 
 const AppearanceOptions = () => {
+  const { settings } = useSettings();
   return (
     <>
-      {/*
-        <Option id="theme" type="segmentedControl" />
-      */}
+      <Option
+        title="Theme"
+        id="theme"
+        type="themeToggle"
+        value={settings.appearance.theme}
+      />
     </>
   );
 };

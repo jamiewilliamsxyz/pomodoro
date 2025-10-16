@@ -1,7 +1,7 @@
-import type { OptionProps } from "@/types";
+import type { OptionProps, Theme } from "@/types";
 import Slider from "@/components/ui/Slider";
 import Toggle from "@/components/ui/Toggle";
-import SegmentedControl from "@/components/ui/SegmentedControl";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export const renderOptionControl = ({
   type,
@@ -22,8 +22,8 @@ export const renderOptionControl = ({
       ); // Telling TS that onChange won't be null/undefined by using "!"
     case "toggle":
       return <Toggle id={id} value={value as boolean} />;
-    case "segmentedControl":
-      return <SegmentedControl />;
+    case "themeToggle":
+      return <ThemeToggle id={id} value={value as Theme} />;
     default:
       return (
         <>

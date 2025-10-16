@@ -28,7 +28,7 @@ export const viewport: Viewport = {
   width: "device-width",
 };
 
-const theme: Theme = "system";
+const theme: Theme = "light";
 
 const RootLayout = ({
   children,

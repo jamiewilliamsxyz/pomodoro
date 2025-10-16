@@ -14,6 +14,12 @@ export const formatValue = ({
     } else {
       return "Off";
     }
+  } else if (id === "theme") {
+    return (
+      (value as string).charAt(0).toUpperCase() +
+      (value as string).slice(1) +
+      " "
+    );
   } else if (typeof value === "number") {
     return `${value}:00`;
   }

@@ -1,4 +1,9 @@
-import { ActiveSectionState, SettingsAction, OptionProps } from "@/types";
+import {
+  ActiveSectionState,
+  SettingsAction,
+  OptionProps,
+  Theme,
+} from "@/types";
 
 export const dispatchSettingChange = ({
   activeSection,
@@ -9,6 +14,20 @@ export const dispatchSettingChange = ({
   activeSection: ActiveSectionState;
   dispatch: React.Dispatch<SettingsAction>;
 } & Pick<OptionProps, "id" | "value">): void => {
+  // Function to convert theme value from a boolean to either "light" or "dark"
+  const convertThemeValue = () => {
+    let themeValue: Theme;
+    if (activeSection != "appearance") return; // Would need to change if adding more setting options to appearance
+    if (value) {
+      // true === light
+      themeValue = "light";
+    } else {
+      // anything else === dark
+      themeValue = "dark";
+    }
+    return themeValue;
+  };
+
   switch (activeSection) {
     case "timer":
       dispatch({
@@ -31,7 +50,7 @@ export const dispatchSettingChange = ({
     case "appearance":
       dispatch({
         type: "UPDATE_APPEARANCE",
-        payload: { [id]: value },
+        payload: { [id]: convertThemeValue() },
       });
       break;
     default:

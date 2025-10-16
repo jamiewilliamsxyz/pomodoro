@@ -9,7 +9,7 @@ export type SettingsOptionType =
   | "slider"
   | "toggle"
   | "textButton"
-  | "segmentedControl";
+  | "themeToggle";
 
 export interface OptionProps {
   title: string;
@@ -41,7 +41,7 @@ export type SettingsContextType = {
   dispatch: React.Dispatch<SettingsAction>;
 };
 
-export type Theme = "light" | "dark" | "system";
+export type Theme = "light" | "dark";
 
 export interface TimerSettings {
   focusLength: number;

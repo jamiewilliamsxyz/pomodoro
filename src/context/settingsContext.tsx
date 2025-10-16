@@ -20,7 +20,7 @@ export const defaultSettings: SettingsState = {
     popupNotifications: true,
     notificationVolume: 50,
   },
-  appearance: { theme: "system" },
+  appearance: { theme: "light" },
 };
 
 const SettingsContext = createContext<SettingsContextType | undefined>(
