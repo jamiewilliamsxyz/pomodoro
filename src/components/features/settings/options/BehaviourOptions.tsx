@@ -1,12 +1,22 @@
-// import Option from "../Option";
+import { useSettings } from "@/context/settingsContext";
+import Option from "../Option";
 
 const BehaviourOptions = () => {
+  const { settings } = useSettings();
   return (
     <>
-      {/*
-        <Option id="autoStart" type="toggle" />
-        <Option id="displayQuotes" type="toggle" />
-      */}
+      <Option
+        title="Auto-start Timers"
+        id="autoStart"
+        type="toggle"
+        value={settings.behaviour.autoStart}
+      />
+      <Option
+        title="Display Quotes"
+        id="displayQuotes"
+        type="toggle"
+        value={settings.behaviour.displayQuotes}
+      />
     </>
   );
 };
