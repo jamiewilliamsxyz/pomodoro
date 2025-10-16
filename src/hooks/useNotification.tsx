@@ -14,11 +14,7 @@ export const useNotification = (): UseNotificationReturn => {
       // Request permission if the user hasn't denied or granted permission
     } else if (Notification.permission === "default") {
       try {
-        const permission: NotificationPermission =
-          await Notification.requestPermission();
-
-        if (permission === "granted")
-          console.info("Notification permission granted");
+        await Notification.requestPermission();
       } catch (err: unknown) {
         if (err instanceof Error) {
           console.error("Notification permission request failed:", err);
