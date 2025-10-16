@@ -33,13 +33,11 @@ export const useTimer = (): UseTimerReturn => {
   // Wrapping functions in useCallback to prevent recreating them on every re-render
   // startStop is used only on StartStopButton click
   const startStop = useCallback((): void => {
-    setIsRunning((prev) => !prev);
-
-    // Request permission if timer has started
-    if (!isRunning) {
-      requestPermission();
-    }
-  }, [requestPermission, isRunning]);
+    setIsRunning((prev) => {
+      if (!prev) requestPermission(); // Request permission if timer is about to start
+      return !prev;
+    });
+  }, [requestPermission]);
 
   const clearTimer = useCallback(() => {
     if (timerRef.current) {
