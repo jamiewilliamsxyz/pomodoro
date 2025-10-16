@@ -6,7 +6,7 @@ import OpenModalButton from "../ui/OpenModalButton";
 
 const Topbar = () => {
   return (
-    <div className="px-6 pt-6 pb-1">
+    <div className="px-6 pt-6">
       <nav className="w-full max-w-[33.5rem] mx-auto px-5 py-3 flex justify-between rounded-full shadow-sm">
         <div className="flex gap-3 items-center">
           <Link href="/">
