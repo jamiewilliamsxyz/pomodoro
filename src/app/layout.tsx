@@ -33,7 +33,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="en" data-theme={"light"}>
+    <html lang="en" data-theme="light">
       <body
         className={`${inter.className} ${roboto.variable} antialiased bg-neutral-50 dark:bg-neutral-950 h-screen flex flex-col`}
       >
