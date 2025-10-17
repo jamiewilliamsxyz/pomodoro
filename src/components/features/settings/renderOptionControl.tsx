@@ -27,7 +27,7 @@ export const renderOptionControl = ({
     default:
       return (
         <>
-          <p className="text-neutral-500">
+          <p className="text-base-200 opacity-80">
             No settings option control available for this section
           </p>
         </>

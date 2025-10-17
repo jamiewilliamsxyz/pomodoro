@@ -13,8 +13,8 @@ const RestartButton = ({
       onClick={restartSession}
       className={`${
         canRestartSession
-          ? "border-neutral-800 text-neutral-800 hover:cursor-pointer hover:text-neutral-500 hover:border-neutral-500 transition-colors duration-200"
-          : "border-neutral-500 text-neutral-500"
+          ? "border-base-200 text-base-200 cursor-pointer hover:opacity-70 transition-opacity duration-200"
+          : "opacity-45 border-base-200 text-base-200"
       } transition-colors duration-200 rounded-full border-[1.5px] flex items-center justify-center h-10 w-10`}
     >
       <RotateCcw width={20} height={20} strokeWidth={1.5} />

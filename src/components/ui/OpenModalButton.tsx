@@ -15,7 +15,7 @@ const OpenModalButton = ({
   return (
     <button
       onClick={() => openModal(modal)}
-      className="text-neutral-800 hover:cursor-pointer hover:text-neutral-500 transition-colors duration-200"
+      className="text-base-200 cursor-pointer hover:opacity-70 transition-opacity duration-200"
     >
       {icon}
     </button>

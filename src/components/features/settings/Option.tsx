@@ -9,15 +9,15 @@ const Option = ({ title, id, type, value, min, max }: OptionProps) => {
   return type === "textButton" ? (
     <button
       onClick={() => dispatch({ type: "RESET_TIMER_SETTINGS" })}
-      className="text-[1.05rem] text-neutral-700 text-left mt-1 hover:text-neutral-500 transition-colors duration-200 cursor-pointer w-fit"
+      className="text-[1.05rem] text-base-300 text-left mt-1 hover:opacity-80 transition-opacity duration-200 cursor-pointer w-fit"
     >
       Reset to Defaults
     </button>
   ) : (
     <div className="flex flex-col gap-1">
-      <div className="flex justify-between items-center text-neutral-700">
+      <div className="flex justify-between items-center text-base-300">
         <p className="text-[1.05rem]">{title}</p>
-        <div className="bg-[#ececec] rounded-sm px-1.5 pt-1.5 pb-1 flex items-center mb-[-2px]">
+        <div className="bg-[#ececec] dark:bg-[#1e1e1e] rounded-sm px-1.5 pt-1.5 pb-1 flex items-center mb-[-2px]">
           <p className="text-[0.95rem] leading-[0.95rem] font-mono">
             {formatValue({ value, id })}
           </p>

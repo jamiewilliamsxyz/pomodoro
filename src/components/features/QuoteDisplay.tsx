@@ -22,7 +22,7 @@ const QuoteDisplay = () => {
       {error && <p className="text-red-400 text-lg">{error}</p>}
 
       {!loading && !error && quote && (
-        <q className="text-neutral-700 text-xl hover:opacity-80 transition-opacity duration-200">
+        <q className="text-base-300 text-xl hover:opacity-80 transition-opacity duration-200">
           {quote}
         </q>
       )}

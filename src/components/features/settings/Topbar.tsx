@@ -5,18 +5,49 @@ import NavItem from "./NavItem";
 import CloseModalButton from "@/components/ui/CloseModalButton";
 
 const sections: { id: ActiveSectionState; icon: JSX.Element }[] = [
-  { id: "timer", icon: <Clock width={24} height={24} strokeWidth={1.25} /> },
+  {
+    id: "timer",
+    icon: (
+      <Clock
+        width={24}
+        height={24}
+        strokeWidth={1.25}
+        className="text-base-200"
+      />
+    ),
+  },
   {
     id: "behaviour",
-    icon: <SlidersHorizontal width={24} height={24} strokeWidth={1.25} />,
+    icon: (
+      <SlidersHorizontal
+        width={24}
+        height={24}
+        strokeWidth={1.25}
+        className="text-base-200"
+      />
+    ),
   },
   {
     id: "notifications",
-    icon: <Bell width={24} height={24} strokeWidth={1.25} />,
+    icon: (
+      <Bell
+        width={24}
+        height={24}
+        strokeWidth={1.25}
+        className="text-base-200"
+      />
+    ),
   },
   {
     id: "appearance",
-    icon: <Palette width={24} height={24} strokeWidth={1.25} />,
+    icon: (
+      <Palette
+        width={24}
+        height={24}
+        strokeWidth={1.25}
+        className="text-base-200"
+      />
+    ),
   },
 ];
 
@@ -27,7 +58,7 @@ const Topbar = () => {
         <CloseModalButton />
       </div>
 
-      <ul className="flex justify-evenly items-center bg-[#ececec] rounded-bl-xl pt-3 pb-[7px] w-full">
+      <ul className="flex justify-evenly items-center bg-[#ececec] dark:bg-[#1a1a1a] rounded-bl-xl pt-3 pb-[7px] w-full">
         {sections.map((section) => (
           <NavItem
             key={section.id}

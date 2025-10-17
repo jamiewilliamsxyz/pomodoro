@@ -15,7 +15,7 @@ const NavItem = ({
     <li className="flex flex-col gap-[5px] group">
       <button
         onClick={() => setActiveSection(sectionId)}
-        className="hover:cursor-pointer"
+        className="cursor-pointer"
       >
         {icon}
       </button>

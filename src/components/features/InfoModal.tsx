@@ -9,7 +9,7 @@ const InfoModal = () => {
       }}
       className="px-6"
     >
-      <div className="p-3 sm:px-5 sm:py-4 flex flex-col gap-4.5 relative top-[12vh] bg-neutral-50 max-w-sm h-fit rounded-xl shadow-sm">
+      <div className="p-3 sm:px-5 sm:py-4 flex flex-col gap-4.5 relative top-[12vh] bg-base-100 max-w-sm h-fit rounded-xl shadow-sm">
         <CloseModalButton />
         <div className="ml-1 flex flex-col gap-3.5">
           <TextLink
@@ -20,7 +20,7 @@ const InfoModal = () => {
             url="https://github.com/jamiewilliamsxyz/pomodoro"
             text="Project Source Code"
           />
-          <i>
+          <i className="text-base-300">
             This project uses the QuoteSlate API, a free and open-source quote
             API. Check it out {""}
             <TextLink

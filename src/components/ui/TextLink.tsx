@@ -10,7 +10,7 @@ const TextLink = ({ url, text }: TextLinkProps) => {
       target="_blank"
       rel="noopener noreferrer"
       title={url}
-      className="w-fit text-neutral-700 underline cursor-pointer hover:text-neutral-500 transition-colors duration-200"
+      className="w-fit text-base-300 underline cursor-pointer hover:opacity-80 transition-opacity duration-200"
     >
       {text}
     </a>

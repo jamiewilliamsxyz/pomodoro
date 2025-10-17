@@ -2,10 +2,6 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-h1 {
-  font-family: var(--font-roboto);
-}
-
 @theme {
   --color-base-100: oklch(98.5% 0 0); /* Backgrounds */
   --color-base-200: oklch(26.9% 0 0); /* Main text & icons */
@@ -13,7 +9,11 @@ h1 {
 }
 
 [data-theme="dark"] {
-  --color-base-100: oklch(14.5% 0 0); /* Backgrounds */
-  --color-base-200: oklch(98.5% 0 0); /* Main text & icons */
-  --color-base-300: oklch(92.2% 0 0); /* Secondary text */
+  --color-base-100: oklch(20.5% 0 0); /* Backgrounds */
+  --color-base-200: oklch(92.2% 0 0); /* Main text & icons */
+  --color-base-300: oklch(87% 0 0); /* Secondary text */
+}
+
+h1 {
+  font-family: var(--font-roboto);
 }

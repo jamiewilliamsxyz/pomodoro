@@ -35,7 +35,7 @@ const ThemeToggle = ({ id, value }: { id: string; value: Theme }) => {
           handleChange(e.target.checked);
         }}
       />
-      <div className="group peer bg-white rounded-full duration-200 w-12 h-6 ring-[1.5px] ring-neutral-300 after:duration-200 after:bg-indigo-300 peer-checked:after:bg-yellow-300 after:rounded-full after:absolute after:h-5 after:w-5 after:top-0.5 after:left-1 after:flex after:justify-center after:items-center peer-checked:after:translate-x-5.5"></div>
+      <div className="group peer bg-base-100 rounded-full duration-200 w-12 h-6 ring-[1.5px] ring-neutral-300 after:duration-200 after:bg-indigo-300 peer-checked:after:bg-yellow-300 after:rounded-full after:absolute after:h-5 after:w-5 after:top-0.5 after:left-1 after:flex after:justify-center after:items-center peer-checked:after:translate-x-5.5"></div>
     </label>
   );
 };
