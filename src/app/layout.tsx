@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Theme } from "@/types";
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
@@ -28,17 +27,15 @@ export const viewport: Viewport = {
   width: "device-width",
 };
 
-const theme: Theme = "light";
-
 const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="en" data-theme={theme}>
+    <html lang="en" data-theme={"light"}>
       <body
-        className={`${inter.className} ${roboto.variable} antialiased bg-neutral-50 h-screen flex flex-col`}
+        className={`${inter.className} ${roboto.variable} antialiased bg-neutral-50 dark:bg-neutral-950 h-screen flex flex-col`}
       >
         <Providers>
           <Topbar />
