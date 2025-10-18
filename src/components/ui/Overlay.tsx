@@ -36,7 +36,7 @@ const Overlay = () => {
       onClick={() => closeModal()}
       className={`${
         activeModal != null ? "opacity-100 " : "opacity-0 pointer-events-none"
-      } bg-neutral-800/40 backdrop-blur-xs transition-opacity duration-200 fixed inset-0 z-50 flex justify-center`}
+      } bg-neutral-800/40 dark:bg-neutral-950/40 backdrop-blur-xs transition-opacity duration-200 fixed inset-0 z-50 flex justify-center`}
     >
       {renderContent()}
     </div>
