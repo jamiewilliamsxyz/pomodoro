@@ -18,9 +18,9 @@ const ProgressCircle = ({
           cx={radius + stroke / 2}
           cy={radius + stroke / 2}
           r={radius}
-          stroke="#e5e5e5"
           strokeWidth={stroke}
           fill="transparent"
+          className="stroke-[#e5e5e5] dark:stroke-[#262626]"
         />
         {/* Indicator Circle */}
         <circle
