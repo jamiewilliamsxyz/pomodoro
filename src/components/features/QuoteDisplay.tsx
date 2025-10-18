@@ -17,7 +17,7 @@ const QuoteDisplay = () => {
       className="max-w-10/12 sm:max-w-lg h-28 sm:h-24 text-center cursor-pointer flex items-center justify-center gap-2 transition-opacity duration-200"
       title="Click to refresh quote"
     >
-      {loading && <Spinner className="mt-7" />}
+      {loading && <Spinner className="mt-6" />}
 
       {error && <p className="text-red-400 text-lg">{error}</p>}
 
