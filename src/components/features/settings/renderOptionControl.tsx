@@ -9,6 +9,7 @@ export const renderOptionControl = ({
   value,
   min,
   max,
+  title,
 }: OptionProps) => {
   switch (type) {
     case "slider":
@@ -18,12 +19,13 @@ export const renderOptionControl = ({
           value={value as number}
           min={min as number}
           max={max as number}
+          title={title}
         />
       ); // Telling TS that onChange won't be null/undefined by using "!"
     case "toggle":
-      return <Toggle id={id} value={value as boolean} />;
+      return <Toggle id={id} value={value as boolean} title={title} />;
     case "themeToggle":
-      return <ThemeToggle id={id} value={value as Theme} />;
+      return <ThemeToggle id={id} value={value as Theme} title={title} />;
     default:
       return (
         <>
