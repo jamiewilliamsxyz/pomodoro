@@ -8,6 +8,7 @@ const StartStopButton = ({ startStop, isRunning }: StartStopButtonProps) => {
   return (
     <button
       onClick={startStop}
+      aria-label={isRunning ? "Stop timer" : "Start timer"}
       className="rounded-full text-emerald-300 border-emerald-300 border-2 flex items-center justify-center h-13 w-13 cursor-pointer hover:opacity-70 transition-opacity duration-200"
     >
       {isRunning ? (
