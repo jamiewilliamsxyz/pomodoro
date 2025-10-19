@@ -14,7 +14,7 @@ const QuoteDisplay = () => {
   return (
     <button
       onClick={() => !loading && fetchQuote()}
-      className="max-w-10/12 sm:max-w-lg h-28 sm:h-24 text-center cursor-pointer flex items-center justify-center gap-2 transition-opacity duration-200"
+      className="max-w-10/12 sm:max-w-lg h-28 sm:h-24 text-center flex items-center justify-center gap-2 transition-opacity duration-200"
       title="Click to refresh quote"
       disabled={loading}
       aria-label="Refresh quote"
@@ -24,7 +24,7 @@ const QuoteDisplay = () => {
       {error && <p className="text-red-400 text-lg">{error}</p>}
 
       {!loading && !error && quote && (
-        <q className="text-base-300 text-xl hover:opacity-80 transition-opacity duration-200">
+        <q className="text-base-300 text-xl hover:opacity-80 transition-opacity duration-200 cursor-pointer">
           {quote}
         </q>
       )}
