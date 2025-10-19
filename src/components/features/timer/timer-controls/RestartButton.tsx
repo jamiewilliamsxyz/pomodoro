@@ -12,6 +12,7 @@ const RestartButton = ({
     <button
       onClick={restartSession}
       aria-label="Restart timer"
+      disabled={!canRestartSession}
       className={`${
         canRestartSession
           ? "border-base-200 text-base-200 cursor-pointer hover:opacity-70 transition-opacity duration-200"
