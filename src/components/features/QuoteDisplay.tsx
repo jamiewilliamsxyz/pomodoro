@@ -12,10 +12,12 @@ const QuoteDisplay = () => {
   if (!settings.behaviour.displayQuotes) return null;
 
   return (
-    <div
+    <button
       onClick={() => !loading && fetchQuote()}
       className="max-w-10/12 sm:max-w-lg h-28 sm:h-24 text-center cursor-pointer flex items-center justify-center gap-2 transition-opacity duration-200"
       title="Click to refresh quote"
+      disabled={loading}
+      aria-label="Refresh quote"
     >
       {loading && <Spinner className="mt-6" />}
 
@@ -26,7 +28,7 @@ const QuoteDisplay = () => {
           {quote}
         </q>
       )}
-    </div>
+    </button>
   );
 };
 
