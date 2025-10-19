@@ -1,5 +1,5 @@
 import type { SettingsState, SettingsAction } from "@/types";
-import { defaultSettings } from "@/context/settingsContext";
+import { DEFAULT_SETTINGS } from "@/constants/defaultSettings";
 
 export const settingsReducer = (
   state: SettingsState,
@@ -9,7 +9,7 @@ export const settingsReducer = (
     case "UPDATE_TIMER":
       return { ...state, timer: { ...state.timer, ...action.payload } };
     case "RESET_TIMER_SETTINGS":
-      return { ...state, timer: defaultSettings.timer };
+      return { ...state, timer: DEFAULT_SETTINGS.timer };
     case "UPDATE_BEHAVIOUR":
       return { ...state, behaviour: { ...state.behaviour, ...action.payload } };
     case "UPDATE_NOTIFICATIONS":
@@ -22,6 +22,8 @@ export const settingsReducer = (
         ...state,
         appearance: { ...state.appearance, ...action.payload },
       };
+    case "SET_SETTINGS":
+      return action.payload;
 
     default:
       return state;

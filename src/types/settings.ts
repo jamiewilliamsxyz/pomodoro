@@ -32,6 +32,10 @@ export type SettingsAction =
   | {
       type: "UPDATE_APPEARANCE";
       payload: Partial<SettingsState["appearance"]>;
+    }
+  | {
+      type: "SET_SETTINGS";
+      payload: SettingsState;
     };
 
 export type SettingsContextType = {

@@ -1,27 +1,11 @@
 "use client";
 
-import { useState, useReducer, createContext, use } from "react";
-import type {
-  SettingsState,
-  SettingsContextType,
-  ActiveSectionState,
-} from "@/types";
+import { useState, useEffect, useReducer, createContext, use } from "react";
+import type { SettingsContextType, ActiveSectionState } from "@/types";
+import { useAutoSave } from "@/hooks/useAutoSave";
+import { getSettings } from "@/lib/settings/getSettings";
 import { settingsReducer } from "@/lib/settings/reducer";
-
-export const defaultSettings: SettingsState = {
-  timer: {
-    focusLength: 25,
-    shortBreakLength: 5,
-    longBreakLength: 15,
-    roundsUntilLongBreak: 4,
-  },
-  behaviour: { autoStart: false, displayQuotes: true },
-  notifications: {
-    popupNotifications: true,
-    notificationVolume: 50,
-  },
-  appearance: { theme: "dark" },
-};
+import { DEFAULT_SETTINGS } from "@/constants/defaultSettings";
 
 const SettingsContext = createContext<SettingsContextType | undefined>(
   undefined
@@ -32,10 +16,31 @@ export const SettingsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  // Track whether localStorage settings have been loaded
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Track which settings section is active
   const [activeSection, setActiveSection] =
     useState<ActiveSectionState>("timer");
 
-  const [settings, dispatch] = useReducer(settingsReducer, defaultSettings);
+  // Reducer for settings
+  const [settings, dispatch] = useReducer(settingsReducer, DEFAULT_SETTINGS);
+
+  // Debounced auto-saving to localStorage for settings on every change
+  useAutoSave(settings);
+
+  // Load settings from localStorage on mount
+  useEffect(() => {
+    const savedSettings = getSettings();
+    dispatch({
+      type: "SET_SETTINGS",
+      payload: savedSettings,
+    });
+    setLoading(false);
+  }, []);
+
+  // Return null instead of rendering children - until settings have been loaded from localStorage (prevents UI flicker)
+  if (loading) return null;
 
   return (
     <SettingsContext
