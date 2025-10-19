@@ -15,6 +15,7 @@ const NavItem = ({
     <li className="flex flex-col gap-[5px] group">
       <button
         onClick={() => setActiveSection(sectionId)}
+        aria-label={`Open ${sectionId} setting options`}
         className="cursor-pointer"
       >
         {icon}

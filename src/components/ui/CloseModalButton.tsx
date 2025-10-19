@@ -7,6 +7,7 @@ const CloseModalButton = () => {
   return (
     <button
       onClick={() => closeModal()}
+      aria-label="Close modal"
       className="w-fit text-red-400 hover:opacity-80 transition-opacity duration-200 cursor-pointer"
     >
       <X width={28} height={28} strokeWidth={1.5} />

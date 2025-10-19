@@ -9,6 +9,7 @@ const Option = ({ title, id, type, value, min, max }: OptionProps) => {
   return type === "textButton" ? (
     <button
       onClick={() => dispatch({ type: "RESET_TIMER_SETTINGS" })}
+      aria-label="Reset timer settings to defaults"
       className="text-[1.05rem] text-base-300 text-left mt-1 hover:opacity-80 transition-opacity duration-200 cursor-pointer w-fit"
     >
       Reset to Defaults
