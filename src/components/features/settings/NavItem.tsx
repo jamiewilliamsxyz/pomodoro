@@ -12,7 +12,7 @@ const NavItem = ({
   const { activeSection, setActiveSection } = useSettings();
 
   return (
-    <li className="flex flex-col gap-[5px] group">
+    <li className="flex flex-col gap-[5px] group cursor-pointer">
       <button
         onClick={() => setActiveSection(sectionId)}
         aria-label={`Open ${sectionId} setting options`}
