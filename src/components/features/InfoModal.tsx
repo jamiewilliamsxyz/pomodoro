@@ -15,10 +15,12 @@ const InfoModal = () => {
           <TextLink
             url="https://github.com/jamiewilliamsxyz"
             text="My GitHub Profile"
+            ariaLabel="My GitHub profile"
           />
           <TextLink
             url="https://github.com/jamiewilliamsxyz/pomodoro"
             text="Project Source Code"
+            ariaLabel="Project source code"
           />
           <i className="text-base-300">
             This project uses the QuoteSlate API, a free and open-source quote
@@ -26,6 +28,7 @@ const InfoModal = () => {
             <TextLink
               url="https://github.com/Musheer360/QuoteSlate"
               text="here"
+              ariaLabel="QuoteSlate GitHub repository"
             />
           </i>
         </div>
