@@ -22,10 +22,12 @@ const Topbar = () => {
           <OpenModalButton
             modal="settings"
             icon={<Settings width={26} height={26} strokeWidth={1.25} />}
+            ariaLabel="Open settings modal"
           />
           <OpenModalButton
             modal="info"
             icon={<Info width={26} height={26} strokeWidth={1.25} />}
+            ariaLabel="Open info modal"
           />
         </div>
       </nav>
