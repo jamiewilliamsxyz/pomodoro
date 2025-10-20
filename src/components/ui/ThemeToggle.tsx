@@ -1,16 +1,10 @@
-import { Theme } from "@/types";
+import { Theme, OptionProps } from "@/types";
 import { dispatchSettingChange } from "@/lib/settings/dispatchSettingChange";
 import { useSettings } from "@/context/settingsContext";
 
-const ThemeToggle = ({
-  id,
-  value,
-  title,
-}: {
-  id: string;
-  value: Theme;
-  title: string;
-}) => {
+type ThemeToggleProps = Pick<OptionProps, "id" | "value" | "title">;
+
+const ThemeToggle = ({ id, value, title }: ThemeToggleProps) => {
   const { dispatch, activeSection } = useSettings();
 
   let booleanValue: boolean;

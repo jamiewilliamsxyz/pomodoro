@@ -2,19 +2,15 @@ import "@/styles/slider.css";
 import { dispatchSettingChange } from "@/lib/settings/dispatchSettingChange";
 import { useSettings } from "@/context/settingsContext";
 
-const Slider = ({
-  id,
-  value,
-  min,
-  max,
-  title,
-}: {
+interface SliderProps {
   id: string;
   value: number;
   min: number;
   max: number;
   title: string;
-}) => {
+}
+
+const Slider = ({ id, value, min, max, title }: SliderProps) => {
   const { dispatch, activeSection } = useSettings();
 
   const handleChange = (value: number) => {
