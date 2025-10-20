@@ -4,6 +4,9 @@ import TextLink from "@/components/ui/TextLink";
 const InfoModal = () => {
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Info modal"
       onClick={(e) => {
         e.stopPropagation();
       }}
