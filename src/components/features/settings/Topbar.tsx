@@ -53,7 +53,7 @@ const sections: { id: ActiveSectionState; icon: JSX.Element }[] = [
 
 const Topbar = () => {
   return (
-    <nav className="flex">
+    <nav aria-label="Settings modal navigation" className="flex">
       <div className="flex p-4 sm:px-6">
         <CloseModalButton />
       </div>
