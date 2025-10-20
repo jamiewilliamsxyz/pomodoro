@@ -2,16 +2,12 @@ import { formatTime } from "@/utils/formatTime";
 import type { TimerState } from "@/types";
 import { useSettings } from "@/context/settingsContext";
 
-type TimerContentProps = Pick<
+type ContentProps = Pick<
   TimerState,
   "sessionType" | "roundNumber" | "currentTime"
 >;
 
-const TimerContent = ({
-  sessionType,
-  roundNumber,
-  currentTime,
-}: TimerContentProps) => {
+const Content = ({ sessionType, roundNumber, currentTime }: ContentProps) => {
   const { settings } = useSettings();
   const { minutes, seconds } = formatTime(currentTime);
 
@@ -42,4 +38,4 @@ const TimerContent = ({
   );
 };
 
-export default TimerContent;
+export default Content;

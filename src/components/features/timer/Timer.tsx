@@ -1,8 +1,8 @@
 "use client";
 
 import { useTimer } from "@/hooks/useTimer";
-import TimerControls from "./timer-controls/TimerControls";
-import TimerDisplay from "./timer-display/TimerDisplay";
+import Controls from "./controls/Controls";
+import Display from "./display/Display";
 
 const Timer = () => {
   const {
@@ -19,13 +19,13 @@ const Timer = () => {
 
   return (
     <div className="flex flex-col items-center gap-6.5">
-      <TimerDisplay
+      <Display
         sessionType={sessionType}
         currentTime={currentTime}
         totalTime={totalTime}
         roundNumber={roundNumber}
       />
-      <TimerControls
+      <Controls
         startStop={startStop}
         restartSession={restartSession}
         skipSession={skipSession}

@@ -3,16 +3,16 @@ import RestartButton from "./RestartButton";
 import SkipButton from "./SkipButton";
 import StartStopButton from "./StartStopButton";
 
-type TimerControlsProps = TimerActions &
+type ControlsProps = TimerActions &
   Pick<TimerState, "isRunning" | "canRestartSession">;
 
-const TimerControls = ({
+const Controls = ({
   startStop,
   restartSession,
   skipSession,
   isRunning,
   canRestartSession,
-}: TimerControlsProps) => {
+}: ControlsProps) => {
   return (
     <div className="flex gap-5 items-center">
       <RestartButton
@@ -25,4 +25,4 @@ const TimerControls = ({
   );
 };
 
-export default TimerControls;
+export default Controls;
