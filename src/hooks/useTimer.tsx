@@ -113,7 +113,7 @@ export const useTimer = (): UseTimerReturn => {
   ]);
 
   const restartSession = useCallback((): void => {
-    setIsRunning(autoStart);
+    setIsRunning(false);
 
     clearTimer();
 
@@ -136,7 +136,6 @@ export const useTimer = (): UseTimerReturn => {
     shortBreakSeconds,
     longBreakSeconds,
     sessionType,
-    autoStart,
     clearTimer,
   ]);
 
