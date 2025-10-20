@@ -1,4 +1,4 @@
-import { Theme, OptionProps } from "@/types";
+import { OptionProps } from "@/types";
 import { dispatchSettingChange } from "@/lib/settings/dispatchSettingChange";
 import { useSettings } from "@/context/settingsContext";
 
