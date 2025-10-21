@@ -4,7 +4,7 @@
 
 Customisable web-based Pomodoro timer featuring motivational quotes, auto-saving adjustable settings, desktop notifications, light/dark themes and more
 
-![Hero image of a phone mockup displaying the Pomodoro app page](/images/hero.png)
+![Hero image of a phone mockup displaying the Pomodoro app page](./public/images/hero.png)
 
 ### 📋 Features
 
@@ -20,9 +20,9 @@ Customisable web-based Pomodoro timer featuring motivational quotes, auto-saving
 
 ### 🖼️ Screenshots
 
-![Pomodoro app light theme screenshot](/images/light-theme.png)
-![Pomodoro app dark theme screenshot](/images/dark-theme.png)
-![Pomodoro app settings modal screenshot](/images/settings-modal.png)
+![Pomodoro app light theme screenshot](./public/images/light-theme.png)
+![Pomodoro app dark theme screenshot](./public/images/dark-theme.png)
+![Pomodoro app settings modal screenshot](./public/images/settings-modal.png)
 
 ### 🛠️ Built With
 
