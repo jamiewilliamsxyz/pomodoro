@@ -1,4 +1,5 @@
 import type { Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
@@ -40,6 +41,7 @@ const RootLayout = ({
           <Topbar />
           <main className="flex items-center justify-center flex-col gap-8 h-screen">
             {children}
+            <Analytics />
           </main>
         </Providers>
       </body>
