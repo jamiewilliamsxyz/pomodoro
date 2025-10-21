@@ -1,8 +1,11 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import Topbar from "@/components/layout/Topbar";
+
+import { metadata } from "@/lib/metadata";
+export { metadata };
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,14 +20,10 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-export const metadata: Metadata = {
-  title: "Pomodoro",
-  description: "A simple Pomodoro timer app built with Next.js and TypeScript",
-};
-
 export const viewport: Viewport = {
-  initialScale: 1,
   width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 const RootLayout = ({
