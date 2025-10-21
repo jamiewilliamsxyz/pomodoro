@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"), // Update for production
+  metadataBase: new URL("https://pomodoro-motivation-timer.vercel.app"),
 
   title: "Pomodoro Timer | Focus & Motivation",
   description:
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Jamie Williams" }],
   openGraph: {
     type: "website",
-    url: "http://localhost:3000", // Update for production
+    url: "https://pomodoro-motivation-timer.vercel.app",
     title: "Pomodoro Timer | Focus & Motivation",
     description:
       "Boost your focus and productivity with the Pomodoro method while staying inspired with motivational quotes",
@@ -37,5 +37,5 @@ export const metadata: Metadata = {
       "Boost your focus and productivity with the Pomodoro method while staying inspired with motivational quotes",
   },
   icons: { icon: "/favicon.ico" },
-  alternates: { canonical: "http://localhost:3000" }, // Update for production
+  alternates: { canonical: "https://pomodoro-motivation-timer.vercel.app" },
 };

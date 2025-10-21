@@ -1,6 +1,6 @@
 ## Pomodoro
 
-<a href="" target="_blank" rel="noopener">Live demo</a>
+[Live demo](https://pomodoro-motivation-timer.vercel.app)
 
 Customisable web-based Pomodoro timer featuring motivational quotes, auto-saving adjustable settings, desktop notifications, light/dark themes and more
 
