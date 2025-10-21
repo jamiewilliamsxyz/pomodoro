@@ -18,7 +18,7 @@ const Timer = () => {
   } = useTimer();
 
   return (
-    <div className="flex flex-col items-center gap-6.5">
+    <section className="flex flex-col items-center gap-6.5">
       <Display
         sessionType={sessionType}
         currentTime={currentTime}
@@ -32,7 +32,7 @@ const Timer = () => {
         isRunning={isRunning}
         canRestartSession={canRestartSession}
       />
-    </div>
+    </section>
   );
 };
 
