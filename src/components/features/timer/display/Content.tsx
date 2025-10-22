@@ -20,13 +20,13 @@ const Content = ({ sessionType, roundNumber, currentTime }: ContentProps) => {
       >
         {sessionType}
       </p>
-      <p
-        role="timer"
+      <time
+        aria-live="polite"
         aria-label={`Time left: ${minutes} minutes and ${seconds} seconds`}
         className="text-center text-6xl font-medium tabular-nums text-base-200"
       >
         {minutes}:{seconds.toString().padStart(2, "0")}
-      </p>
+      </time>
       <p
         aria-live="polite"
         aria-label={`Round ${roundNumber} of ${settings.timer.roundsUntilLongBreak}`}
