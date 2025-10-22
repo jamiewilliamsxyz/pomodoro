@@ -12,14 +12,14 @@ const QuoteDisplay = () => {
   if (!settings.behaviour.displayQuotes) return null;
 
   return (
-    <section>
+    <section className="flex justify-center">
       <button
         onClick={() => !loading && fetchQuote()}
         className="max-w-10/12 sm:max-w-lg h-28 sm:h-24 text-center flex items-center justify-center gap-2 transition-opacity duration-200"
         disabled={loading}
         aria-label="Refresh quote"
       >
-        {loading && <Spinner className="mt-6" />}
+        {loading && <Spinner className="mt-5 shrink-0" />}
 
         {error && <p className="text-red-400 text-lg">{error}</p>}
 
