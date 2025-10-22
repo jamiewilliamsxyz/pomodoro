@@ -13,27 +13,27 @@ const Content = ({ sessionType, roundNumber, currentTime }: ContentProps) => {
 
   return (
     <div className="absolute flex flex-col items-center gap-5">
-      <h2
+      <p
         aria-live="polite"
         aria-label={`Current session type: ${sessionType}`}
         className="text-xl text-base-300"
       >
         {sessionType}
-      </h2>
-      <h3
+      </p>
+      <p
         role="timer"
         aria-label={`Time left: ${minutes} minutes and ${seconds} seconds`}
         className="text-center text-6xl font-medium tabular-nums text-base-200"
       >
         {minutes}:{seconds.toString().padStart(2, "0")}
-      </h3>
-      <h4
+      </p>
+      <p
         aria-live="polite"
         aria-label={`Round ${roundNumber} of ${settings.timer.roundsUntilLongBreak}`}
         className="text-lg text-base-300"
       >
         {roundNumber}/{settings.timer.roundsUntilLongBreak}
-      </h4>
+      </p>
     </div>
   );
 };
