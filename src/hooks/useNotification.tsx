@@ -1,5 +1,6 @@
 import type { UseNotificationReturn, NotifyProps } from "@/types";
 import { useSettings } from "@/context/settingsContext";
+import { isMobile } from "@/utils/isMobile";
 
 export const useNotification = (): UseNotificationReturn => {
   const { settings } = useSettings();
@@ -7,10 +8,14 @@ export const useNotification = (): UseNotificationReturn => {
   const { popupNotifications, notificationVolume } = settings.notifications;
 
   const requestPermission = async (): Promise<void> => {
+    // Check if user is on mobile
+    if (isMobile()) return;
+
     // Check browser support
     if (!("Notification" in window)) {
       console.warn("This browser does not support notifications");
       return;
+
       // Request permission if the user hasn't denied or granted permission
     } else if (Notification.permission === "default") {
       try {
@@ -32,6 +37,8 @@ export const useNotification = (): UseNotificationReturn => {
   };
 
   const notify = ({ currentSession, nextDuration, nextBreak }: NotifyProps) => {
+    if (isMobile()) return;
+
     if (notificationVolume != 0) playSound();
     if (!popupNotifications) return;
 
