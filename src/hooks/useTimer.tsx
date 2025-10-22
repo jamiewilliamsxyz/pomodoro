@@ -190,8 +190,12 @@ export const useTimer = (): UseTimerReturn => {
   // Reset timer and rounds if user changes rounds setting to a value below the current round
   useEffect(() => {
     if (roundsUntilLongBreak < roundNumber) {
-      setRoundNumber(0);
-      handleSessionEnd();
+      setIsRunning(false);
+      clearTimer();
+      setRoundNumber(1);
+      setSessionType("Focus");
+      setCurrentTime(focusSeconds);
+      setTotalTime(focusSeconds);
     }
     // eslint-disable-next-line
   }, [roundsUntilLongBreak]);
