@@ -187,6 +187,15 @@ export const useTimer = (): UseTimerReturn => {
     // eslint-disable-next-line
   }, [longBreakLength]);
 
+  // Reset timer and rounds if user changes rounds setting to a value below the current round
+  useEffect(() => {
+    if (roundsUntilLongBreak < roundNumber) {
+      setRoundNumber(0);
+      handleSessionEnd();
+    }
+    // eslint-disable-next-line
+  }, [roundsUntilLongBreak]);
+
   // Returning functions/state to use in Timer components
   return {
     startStop,
